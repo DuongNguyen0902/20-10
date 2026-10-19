@@ -1,0 +1,662 @@
+:root{--ink:#543b45;--muted:#8b7078;--rose:#bd6178;--rose-dark:#9d4560;--blush:#f5d9dc;--cream:#fffaf3;--leaf:#708d73;--gold:#b98d5e;--shadow:0 22px 70px #8f56652c;--font:Georgia,'Times New Roman',serif}
+    *{box-sizing:border-box}html{min-height:100%;background:#f7eee8}body{margin:0;color:var(--ink);font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;overflow-x:hidden}button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible{outline:3px solid #8b5069;outline-offset:4px}button:disabled{cursor:default;opacity:.65}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .app{min-height:100svh;position:relative;isolation:isolate;overflow:hidden;background:radial-gradient(circle at 18% 12%,#ffe9e9 0,transparent 29%),radial-gradient(circle at 82% 8%,#efe0ed 0,transparent 26%),linear-gradient(150deg,#fffaf3 0%,#f7e8e7 57%,#ece8dd 100%);transition:background .8s ease}.app::before{content:"";position:absolute;inset:0;z-index:-2;opacity:.4;background-image:radial-gradient(#ad758263 1px,transparent 1px);background-size:25px 25px;mask-image:linear-gradient(to bottom,transparent,black 45%,transparent 96%)}.app::after{content:"";position:absolute;z-index:-1;width:420px;height:420px;border:1px solid #c994a154;border-radius:50%;left:50%;top:46%;transform:translate(-50%,-50%);box-shadow:0 0 0 90px #fff8f128,0 0 0 180px #fff8f112;pointer-events:none}.app.garden-mode{background:radial-gradient(circle at 50% 27%,#fff6ec,#e8eedf 59%,#d8e8d8)}.app.letter-mode{background:radial-gradient(circle at 50% 10%,#fffaf3,#f3dfe0 55%,#efe6dc)}
+    .site-header{height:78px;padding:18px clamp(20px,4.7vw,80px);display:flex;justify-content:space-between;align-items:center;gap:15px;position:relative;z-index:10}.brand{display:flex;align-items:center;gap:11px;color:var(--ink);text-decoration:none;white-space:nowrap}.brand-mark{display:grid;place-items:center;width:38px;height:38px;border:1px solid #b88e87;border-radius:50%;font-family:var(--font);font-style:italic;font-size:22px;color:var(--rose)}.brand strong{font-size:11px;letter-spacing:.22em;font-weight:700}.header-right{display:flex;align-items:center;gap:10px}.date-label{font-size:11px;letter-spacing:.17em;color:var(--muted);text-transform:uppercase}.sound-btn{height:36px;min-width:36px;border:1px solid #c9adb0;border-radius:50%;background:#fffaf380;color:var(--rose-dark);display:grid;place-items:center;font-size:15px}.sound-btn[aria-pressed="true"]{background:#af667a;color:white}
+    .frame{width:min(1180px,100% - 42px);min-height:calc(100svh - 136px);margin:0 auto;display:flex;align-items:center;justify-content:center;position:relative}.scene{display:none;width:100%;max-width:1060px;animation:arrive .65s cubic-bezier(.22,1,.36,1) both}.scene.active{display:block}.scene-grid{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:clamp(25px,7vw,100px)}.eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--rose-dark);font-size:11px;font-weight:700;letter-spacing:.23em;text-transform:uppercase}.eyebrow::before{content:"";width:31px;height:1px;background:currentColor}h1,h2,h3,p{margin-top:0}h1,h2{font-family:var(--font);font-weight:400;line-height:1.08;letter-spacing:-.045em}h1{font-size:clamp(48px,7vw,92px);margin:22px 0 20px}h2{font-size:clamp(43px,6vw,72px);margin:18px 0}.accent{color:var(--rose-dark);font-style:italic}.lead{font-size:clamp(16px,1.7vw,19px);line-height:1.75;color:#775d65;max-width:510px}.small-note{font-size:12px;color:var(--muted);line-height:1.6}.center{text-align:center}.center .eyebrow{justify-content:center}.center .eyebrow::before{display:none}.center .lead{margin-left:auto;margin-right:auto}.primary,.secondary{min-height:49px;padding:13px 23px;border-radius:99px;border:1px solid var(--rose-dark);font-size:13px;font-weight:700;letter-spacing:.02em;transition:transform .2s,background .2s,box-shadow .2s}.primary{background:var(--rose-dark);color:white;box-shadow:0 12px 23px #a95c7540}.secondary{background:#fffaf38c;color:var(--rose-dark)}.primary:hover,.secondary:hover{transform:translateY(-3px);box-shadow:0 15px 28px #a95c7533}.actions{display:flex;gap:10px;flex-wrap:wrap}.ornament{font-family:var(--font);font-size:17px;color:var(--gold);letter-spacing:.35em;margin:18px 0}.divider{height:1px;background:linear-gradient(90deg,transparent,#bf9d9d,transparent);max-width:390px;margin:25px auto}
+    .hero-art{position:relative;width:min(100%,480px);aspect-ratio:1;justify-self:center;display:grid;place-items:center;filter:drop-shadow(0 20px 26px #a45c6b22)}.hero-art::before{content:"";position:absolute;inset:9%;border:1px solid #cdaeb1;border-radius:50%;box-shadow:0 0 0 25px #fff7f35c,0 0 0 56px #fff8f130}.hero-art::after{content:"20 / 10";position:absolute;bottom:3%;font:italic 17px var(--font);letter-spacing:.22em;color:#a77f83}.petal{position:absolute;width:18px;height:31px;border-radius:100% 0 100% 0;background:linear-gradient(140deg,#e3a1ae,#f6d4cd);opacity:.75;animation:drift 8s ease-in-out infinite}.petal.p1{left:11%;top:19%;transform:rotate(20deg)}.petal.p2{right:14%;top:17%;animation-delay:-2s;transform:rotate(70deg)}.petal.p3{right:10%;bottom:20%;animation-delay:-4s;transform:rotate(15deg)}.petal.p4{left:18%;bottom:14%;animation-delay:-6s;transform:rotate(-30deg)}.hero-lotus{width:85%;height:85%;display:block;overflow:visible}.lotus-petal{transform-origin:50% 78%;animation:lotusBreath 4s ease-in-out infinite alternate}.lotus-petal:nth-child(even){animation-delay:-2s}.hero-heart{position:absolute;left:50%;top:47%;transform:translate(-50%,-50%);font-size:48px;color:#c47588;text-shadow:0 3px 10px #fff}
+    .name-card{background:#fffaf3db;backdrop-filter:blur(8px);border:1px solid #e3cfc9;border-radius:24px;box-shadow:var(--shadow);padding:clamp(22px,3vw,34px);margin-top:30px;max-width:505px}.name-card label{display:block;font-size:12px;font-weight:700;letter-spacing:.08em;color:#765b60;margin-bottom:11px}.name-row{display:flex;gap:9px}.name-row input{width:100%;min-width:0;border:1px solid #dac2c2;border-radius:12px;background:#fff;color:var(--ink);padding:14px 15px;font-size:16px}.name-row input::placeholder{color:#b39da0}.name-row button{white-space:nowrap}.error{min-height:24px;margin:9px 0 0;color:#a93557;font-size:13px;font-weight:600}.name-card.shake{animation:shake .38s}.footnote{font-size:12px;line-height:1.55;color:#967b7f;margin:12px 0 0}
+    .stage-wrap{max-width:860px;margin:0 auto}.stage-top{text-align:center;margin-bottom:clamp(20px,3vw,45px)}.stage-top h2{margin-bottom:12px}.stage-top .lead{margin-bottom:0}.heart-button{display:block;position:relative;width:clamp(190px,27vw,280px);aspect-ratio:1;margin:5px auto 25px;border:0;background:transparent;touch-action:manipulation;user-select:none;filter:drop-shadow(0 19px 18px #b8577555);transition:filter .25s,transform .25s}.heart-button:hover{transform:translateY(-6px) rotate(-3deg);filter:drop-shadow(0 25px 20px #b8577588)}.heart-shape{position:absolute;inset:12%;clip-path:path('M 100 176 C 25 120 -12 84 20 36 C 43 -1 85 10 100 42 C 115 10 157 -1 180 36 C 212 84 175 120 100 176 Z');width:200px;height:200px;max-width:none;left:50%;top:50%;transform:translate(-50%,-50%) scale(var(--heart-scale,1));background:radial-gradient(circle at 33% 24%,#ffe5ea 0,#e69aae 42%,#c4607c 78%,#ad4968 100%);box-shadow:inset -18px -19px 23px #8f3f5c40,inset 14px 15px 20px #fff7;transition:transform .2s;animation:beat 2.2s ease-in-out infinite}.heart-shape::after{content:"";position:absolute;width:55px;height:26px;top:42px;left:42px;border-radius:50%;background:#fff9;filter:blur(7px);transform:rotate(-33deg)}.heart-button span.heart-label{position:absolute;inset:0;display:grid;place-items:center;z-index:2;color:#fff;font-family:var(--font);font-size:21px;font-style:italic;text-shadow:0 2px 5px #8f3f5c77}.heart-button.pressed .heart-shape{animation:beat .57s infinite;--heart-scale:1.08}.hold-ring{position:absolute;inset:-11px;border-radius:50%;background:conic-gradient(var(--rose-dark) calc(var(--hold-progress,0)*1%),#ddc4c333 0);mask:radial-gradient(farthest-side,transparent calc(100% - 5px),#000 calc(100% - 4px));pointer-events:none}.hint{text-align:center;color:#8c7178;font-size:13px}.stage-actions{display:flex;justify-content:center;gap:10px;margin:25px 0}.gift-illustration{position:relative;min-height:300px;display:grid;place-items:center}.gift-box{width:168px;height:134px;background:linear-gradient(135deg,#d99baa,#bb6781);border-radius:10px 10px 18px 18px;box-shadow:inset -15px -10px 18px #a24f6740,0 30px 35px #b15b7540;position:relative;transform:rotate(-4deg)}.gift-box::before{content:"";position:absolute;left:-10px;right:-10px;top:-29px;height:45px;background:#edb5bf;border-radius:8px;box-shadow:0 8px 10px #a15c6940}.gift-box::after{content:"";position:absolute;left:50%;top:-29px;bottom:0;width:25px;background:#fff6e2;transform:translateX(-50%)}.gift-bow{position:absolute;left:50%;top:-78px;z-index:2;transform:translateX(-50%);color:#bf6f83;font:93px var(--font)}.gift-orbit{position:absolute;width:350px;height:350px;border:1px dashed #ca9daa;border-radius:50%;animation:spin 23s linear infinite}.gift-orbit::before,.gift-orbit::after{content:'✦';position:absolute;color:#c48694;font-size:23px}.gift-orbit::before{top:20px;left:45px}.gift-orbit::after{bottom:24px;right:50px}
+    .game-field{max-width:800px;min-height:330px;position:relative;margin:0 auto 13px;border-radius:42% 44% 35% 35% / 27% 26% 35% 35%;background:linear-gradient(180deg,#fffaf35c,#f1d7dc80);border:1px solid #ecd2d4;overflow:hidden}.floating-heart{position:absolute;left:var(--x);top:var(--y);width:70px;height:70px;border:none;border-radius:50%;background:#fff9f2b8;color:#be6980;font-size:33px;box-shadow:0 10px 24px #aa6a781f;animation:float var(--duration) ease-in-out infinite alternate;animation-delay:var(--delay);transition:transform .25s,opacity .25s,background .25s}.floating-heart:hover{transform:scale(1.18);background:#fff}.floating-heart.collected{opacity:0;transform:scale(1.8);pointer-events:none}.game-count{position:absolute;top:20px;left:50%;transform:translateX(-50%);background:#fff9f3;border:1px solid #ecd2d4;border-radius:99px;padding:8px 17px;font-size:13px;color:var(--rose-dark);font-weight:700;white-space:nowrap}.wish-toast{text-align:center;min-height:30px;color:#a04b65;font-family:var(--font);font-style:italic;font-size:20px}
+    .choice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:35px auto 0;max-width:770px}.choice{min-height:225px;border:1px solid #e6cecb;border-radius:25px;padding:25px 15px;background:#fffaf3b8;color:var(--ink);box-shadow:0 13px 30px #a87b7630;transition:transform .25s,box-shadow .25s,background .25s}.choice:hover,.choice:focus-visible{transform:translateY(-7px);box-shadow:0 20px 36px #a87b7645}.choice[data-wish="happiness"]{background:#fff2e8}.choice[data-wish="peace"]{background:#f0f4ee}.choice[data-wish="luck"]{background:#f5eff6}.choice-icon{display:block;font-size:50px;line-height:1.3;margin-bottom:12px}.choice strong{display:block;font:32px var(--font);margin-bottom:9px}.choice small{font-size:12px;color:#876f72;line-height:1.5}.choice.selected{outline:3px solid var(--rose);outline-offset:3px}
+    .garden{height:350px;position:relative;max-width:760px;margin:0 auto;overflow:hidden;border-radius:38px;background:linear-gradient(#e7edf0 0%,#f9eee2 60%,#dce9d5 61%,#cfe1c8 100%);box-shadow:inset 0 0 45px #fff9f4,0 22px 40px #8c9e8533}.garden::before{content:"";position:absolute;width:390px;height:390px;border-radius:50%;left:50%;top:5%;transform:translateX(-50%);background:#fff7e4;filter:blur(22px);opacity:.78}.garden-hill{position:absolute;bottom:-73px;left:-8%;width:68%;height:170px;border-radius:50%;background:#aecaab}.garden-hill.h2{left:auto;right:-12%;bottom:-91px;width:75%;background:#9fbd9c}.lotus-spot{position:absolute;bottom:44px;left:50%;transform:translateX(-50%);z-index:3}.grow-button{height:155px;width:155px;background:transparent;border:0;position:relative;display:grid;place-items:center;transform-origin:50% 100%;transition:transform .55s cubic-bezier(.22,1,.36,1)}.grow-button:hover{transform:scale(1.07)}.grow-button .seed{position:absolute;bottom:5px;width:46px;height:46px;border-radius:60% 40% 60% 40%;transform:rotate(45deg);background:#c26f83;color:white;display:grid;place-items:center;font-size:24px;box-shadow:0 10px 22px #ae70854f;transition:opacity .4s}.bloom-svg{width:180px;height:180px;overflow:visible;opacity:0;transform:translateY(60px) scale(.2);transition:opacity .65s,transform .7s cubic-bezier(.22,1,.36,1);filter:drop-shadow(0 13px 14px #91757445)}.garden[data-growth="1"] .bloom-svg{opacity:.5;transform:translateY(30px) scale(.55)}.garden[data-growth="2"] .bloom-svg{opacity:.8;transform:translateY(13px) scale(.78)}.garden[data-growth="3"] .bloom-svg{opacity:1;transform:translateY(0) scale(1)}.garden[data-growth="1"] .seed,.garden[data-growth="2"] .seed,.garden[data-growth="3"] .seed{opacity:0}.side-flower{position:absolute;bottom:32px;font-size:58px;filter:drop-shadow(0 8px 5px #748e7140);transform:scale(0);transition:transform .55s cubic-bezier(.2,1.6,.3,1)}.side-flower.f1{left:17%}.side-flower.f2{right:18%;font-size:70px}.side-flower.f3{left:36%;bottom:17px;font-size:44px}.garden[data-growth="1"] .f1,.garden[data-growth="2"] .f1,.garden[data-growth="3"] .f1,.garden[data-growth="2"] .f2,.garden[data-growth="3"] .f2,.garden[data-growth="3"] .f3{transform:scale(1)}.growth-counter{position:absolute;top:20px;left:20px;font-size:12px;font-weight:700;color:#58735c;background:#fffaf3c9;border-radius:99px;padding:7px 13px}.envelope-button{display:none;margin:18px auto 0;align-items:center;gap:12px}.envelope-button.visible{display:flex}
+    .envelope-art{width:235px;height:155px;margin:0 auto 20px;position:relative;filter:drop-shadow(0 21px 17px #a75d7444);animation:float 3s ease-in-out infinite alternate}.envelope-art::before{content:"";position:absolute;inset:0;background:#f4d1cc;border-radius:7px;clip-path:polygon(0 0,50% 57%,100% 0,100% 100%,0 100%)}.envelope-art::after{content:"";position:absolute;inset:0;background:#fbe4d8;border-radius:7px;clip-path:polygon(0 100%,50% 38%,100% 100%)}.envelope-seal{position:absolute;z-index:2;left:50%;top:60%;transform:translate(-50%,-50%);width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:#b76176;color:white;font:italic 24px var(--font);border:2px solid #f3d5d6}
+    .letter{position:relative;max-width:740px;margin:0 auto;background:#fffdf6;box-shadow:0 25px 65px #9e66704d;border:1px solid #e1c7bd;padding:clamp(25px,6vw,60px);text-align:left;transform:rotate(-.7deg)}.letter::before{content:"";position:absolute;inset:11px;border:1px solid #dfc8be;pointer-events:none}.letter::after{content:"";position:absolute;right:28px;top:20px;font-size:33px;color:#c58a94}.letter-date{font-size:12px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}.letter h2{font-size:clamp(39px,5vw,61px);margin:17px 0 25px}.letter p{font-size:clamp(15px,1.5vw,18px);line-height:1.85;color:#654f55}.letter .salutation{font:italic 24px var(--font);color:var(--rose-dark)}.letter .signature{text-align:right;color:var(--rose-dark);font:italic 22px var(--font);margin:24px 0 0}.letter-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:30px 0 5px}.secret-heart{border:0;background:transparent;color:#b9647c;font-size:26px;vertical-align:middle;transition:transform .2s}.secret-heart:hover{transform:scale(1.25)}.secret{display:none;border-top:1px solid #e9d4d2;margin-top:18px;padding-top:16px;color:#a25069!important;font:italic 18px var(--font)!important}.secret.visible{display:block}
+    .site-footer{min-height:58px;padding:12px clamp(20px,4.7vw,80px) 20px;display:flex;align-items:center;justify-content:space-between;gap:15px;color:#9b7e83;font-size:11px;letter-spacing:.04em}.progress{display:flex;align-items:center;gap:6px}.progress span{height:5px;width:20px;background:#dcc7ca;border-radius:99px;transition:background .3s,width .3s}.progress span.current{background:var(--rose-dark);width:29px}.progress span.done{background:#bb929b}.app[data-step="gate"] .progress{visibility:hidden}
+    .confetti{position:fixed;left:var(--px);top:var(--py);pointer-events:none;z-index:30;color:var(--rose);font-size:var(--size);animation:burst .9s ease-out forwards}.fade-in{animation:arrive .5s ease both}
+    @keyframes arrive{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}@keyframes float{from{transform:translateY(-7px) rotate(-4deg)}to{transform:translateY(10px) rotate(5deg)}}@keyframes drift{0%,100%{translate:0 0}50%{translate:13px -13px}}@keyframes lotusBreath{to{transform:scale(1.04) rotate(2deg)}}@keyframes beat{0%,100%{transform:translate(-50%,-50%) scale(var(--heart-scale,1))}15%{transform:translate(-50%,-50%) scale(1.05)}35%{transform:translate(-50%,-50%) scale(var(--heart-scale,1))}50%{transform:translate(-50%,-50%) scale(1.025)}}@keyframes spin{to{transform:rotate(360deg)}}@keyframes shake{20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}@keyframes burst{to{opacity:0;transform:translate(var(--dx),var(--dy)) rotate(260deg) scale(.4)}}
+    @media(max-width:760px){.site-header{height:65px}.date-label{display:none}.frame{width:min(100% - 34px,570px);min-height:calc(100svh - 125px);align-items:flex-start;padding-top:24px}.scene-grid{grid-template-columns:1fr;gap:8px}.scene-grid .hero-art{grid-row:1;width:min(57vw,260px)}.scene-grid .copy{grid-row:2;text-align:center}.scene-grid .eyebrow{justify-content:center}.scene-grid .eyebrow::before{display:none}h1{font-size:clamp(42px,11vw,65px);margin:13px 0}.lead{font-size:15px;line-height:1.6}.name-card{text-align:left;margin:19px auto 0}.hero-art::after{display:none}.stage-top{margin-bottom:18px}.stage-top h2{font-size:clamp(39px,10vw,59px)}.gift-illustration{min-height:230px}.gift-orbit{width:270px;height:270px}.choice-grid{gap:8px}.choice{min-height:155px;padding:15px 7px;border-radius:17px}.choice-icon{font-size:37px;margin:0}.choice strong{font-size:21px}.choice small{font-size:11px}.garden{height:315px}.site-footer{padding:10px 20px 17px}.app::after{width:280px;height:280px}.letter{transform:none}.letter-actions{margin-bottom:18px}}
+    @media(max-width:420px){.name-row{display:block}.name-row button{width:100%;margin-top:9px}.choice strong{font-size:19px}.choice small{font-size:10px}.choice-grid{margin-top:21px}.floating-heart{width:59px;height:59px;font-size:28px}.game-field{min-height:310px}.side-flower.f1{left:8%}.side-flower.f2{right:8%}.site-footer{font-size:10px}}
+    /* 20/10 refresh: joyful, graphic, and closer to the EONSR brand. */
+    :root{--ink:#172238;--muted:#5d6879;--rose:#ef665e;--rose-dark:#d94d4c;--blush:#ffe9d9;--cream:#fffdf6;--leaf:#3b9f88;--gold:#efaa26;--shadow:9px 10px 0 #17223814;--font:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+    body{color:var(--ink);background:#fffdf6}
+    .app{background:linear-gradient(135deg,#fffdf6 0%,#fff9e8 55%,#eaf9f3 100%)}
+    .app::before{opacity:.35;background-image:radial-gradient(#15223833 1px,transparent 1px);background-size:24px 24px;mask-image:linear-gradient(90deg,black,transparent 25%,transparent 75%,black)}
+    .app::after{display:none}.app.garden-mode{background:linear-gradient(150deg,#fffdf6,#e7f7e9)}.app.letter-mode{background:linear-gradient(150deg,#fffdf6,#e9f6f4)}
+    .site-header{height:84px;border-bottom:1px solid #17223813;background:#fffdf9bb;backdrop-filter:blur(15px)}
+    .brand{gap:12px}.brand-logo{width:136px;height:46px;object-fit:contain;display:block}.brand-divider{height:22px;width:1px;background:#17223840}.brand strong{font-size:12px;letter-spacing:.06em;color:#26364b}.date-label{color:#4d6174;font-weight:700;letter-spacing:.07em}
+    .sound-btn{border:2px solid var(--ink);border-radius:12px;background:#fff;color:var(--ink);font-weight:800}.sound-btn[aria-pressed="true"]{background:var(--ink);color:white}
+    h1,h2{font-family:var(--font);font-weight:830;letter-spacing:-.06em;line-height:1.05}h1{font-size:clamp(52px,7vw,90px)}h2{font-size:clamp(43px,5.7vw,68px)}.accent{font-style:normal;color:var(--rose-dark)}.lead{color:#4e5b69;font-size:clamp(16px,1.7vw,19px);line-height:1.58}
+    .eyebrow{font-size:11px;letter-spacing:.12em;color:var(--ink);font-weight:850}.eyebrow::before,.center .eyebrow::before{content:"";display:block;width:9px;height:9px;border:0;border-radius:50%;background:var(--rose)}
+    .primary,.secondary{min-height:50px;border:2px solid var(--ink);border-radius:14px;padding:12px 19px;font-size:14px;font-weight:800;box-shadow:4px 5px 0 var(--ink);transition:transform .18s,box-shadow .18s,background .18s}.primary{background:#ffcf61;color:var(--ink)}.secondary{background:#fffdf8;color:var(--ink)}.primary:hover,.secondary:hover{transform:translate(2px,2px);box-shadow:2px 3px 0 var(--ink)}
+    .name-card{background:white;border:2px solid var(--ink);border-radius:22px;box-shadow:8px 9px 0 #17223816}.name-card label{color:var(--ink);font-size:13px;letter-spacing:0}.name-row input{border:2px solid #b6c0c8;border-radius:12px;color:var(--ink)}.name-row input:focus{border-color:var(--ink)}.error{color:#b8363e}.footnote{color:#697584}
+    .hero-art::before{border:2px dashed #72bca9;box-shadow:none;background:#ecf8e84d}.hero-art::after{font:800 15px var(--font);letter-spacing:.16em;color:var(--ink)}.petal{opacity:.9;background:linear-gradient(140deg,#ffbe79,#f18b79)}
+    .gift-box{background:linear-gradient(135deg,#ff9b78,#ef655e);box-shadow:8px 10px 0 #17223823}.gift-box::before{background:#ffd169;box-shadow:0 8px 0 #17223815}.gift-box::after{background:#fffdf6}.gift-bow{color:#ef665e}.gift-orbit{border-color:#72bca9}.gift-orbit::before,.gift-orbit::after{color:#e8931d}
+    .heart-shape{background:radial-gradient(circle at 33% 24%,#fff1cf 0,#ff9c78 35%,#ed615e 76%,#c53b52 100%)}.heart-button span.heart-label{font-family:var(--font);font-weight:850;font-style:normal;font-size:20px}.hint{color:#596a78;font-weight:600}
+    .game-field{border:2px solid #172238;border-radius:27px;background:radial-gradient(circle at 40% 35%,#fff9e8 0,#eaf9f3 85%);box-shadow:8px 9px 0 #17223814}.floating-heart{background:#fff;border:2px solid var(--ink);color:var(--rose);box-shadow:5px 6px 0 #17223820}.floating-heart:nth-child(3n){background:#ffe59b;color:#e46e4f}.floating-heart:nth-child(4n){background:#d2f0e5;color:#258f79}.game-count{border:2px solid var(--ink);background:#ffcf61;color:var(--ink);font-weight:850}.wish-toast{color:#c7484b;font:800 20px var(--font)}
+    #scene-wish .stage-wrap{max-width:960px}#scene-wish .stage-top{margin-bottom:25px}#scene-wish .lead{max-width:590px}
+    .choice-grid{max-width:none;gap:18px;margin:31px auto 0}.choice{position:relative;text-align:left;min-height:245px;padding:22px 22px 20px;background:#fff;border:2px solid var(--ink);border-radius:22px;color:var(--ink);box-shadow:7px 8px 0 var(--ink);display:flex;flex-direction:column;align-items:flex-start;overflow:hidden;transition:transform .2s,box-shadow .2s}.choice::before{content:"";position:absolute;width:150px;height:150px;border:2px solid #17223818;border-radius:50%;right:-44px;top:-48px}.choice::after{content:"↗";position:absolute;right:20px;bottom:18px;display:grid;place-items:center;width:34px;height:34px;border:2px solid var(--ink);border-radius:50%;font-size:19px;font-weight:850}.choice:hover,.choice:focus-visible{transform:translate(3px,3px) rotate(-1deg);box-shadow:4px 5px 0 var(--ink)}.choice:active{transform:translate(6px,7px);box-shadow:1px 1px 0 var(--ink)}.choice[data-wish="happiness"]{background:#ffe49e}.choice[data-wish="peace"]{background:#cceee4}.choice[data-wish="luck"]{background:#ffcdc2}.choice.selected{outline:3px solid var(--ink);outline-offset:4px}.choice-kicker{font-size:11px;font-weight:900;letter-spacing:.16em;color:#344052}.choice-icon{position:relative;display:grid;place-items:center;width:72px;height:72px;margin:10px 0 15px;border:2px solid var(--ink);border-radius:20px;background:#fff8;font-size:40px;line-height:1}.choice strong{font:850 clamp(25px,2.5vw,32px) var(--font);letter-spacing:-.05em;margin:0 0 6px}.choice small{font-size:14px;color:#39495b;line-height:1.4;max-width:195px}.choice-arrow{display:none}
+    .garden{border:2px solid var(--ink);border-radius:26px;box-shadow:8px 9px 0 #1722381f;background:linear-gradient(#d9f3ec 0%,#fff3cc 59%,#c9e3bd 60%,#abd3a5 100%)}.growth-counter{background:#fffdf6;border:2px solid var(--ink);color:var(--ink);font-weight:850}
+    .envelope-art{filter:drop-shadow(9px 10px 0 #17223822)}.envelope-art::before{background:#ffbc9b}.envelope-art::after{background:#ffe2ba}.envelope-seal{background:var(--rose-dark);font:800 21px var(--font)}
+    .letter{border:2px solid var(--ink);box-shadow:11px 12px 0 #17223822;transform:rotate(-.4deg);background:#fffdf8}.letter::before{border-color:#efccc2}.letter::after{color:var(--rose)}.letter h2{font-size:clamp(38px,5vw,60px)}.letter p{color:#394758}.letter .salutation{font:700 21px var(--font);color:var(--rose-dark)}.letter .signature{font:750 20px var(--font);color:var(--ink)}.letter .secret{font:700 17px var(--font)!important;color:var(--rose-dark)!important}
+    .site-footer{border-top:1px solid #17223816;background:#fffdf97c;color:#617080;font-weight:700}.progress span{background:#b6cbc5}.progress span.current{background:var(--rose)}.progress span.done{background:#55ad96}
+    @media(max-width:760px){.site-header{height:68px;padding:10px 17px}.brand-logo{width:102px;height:36px}.brand-divider{height:18px}.brand strong{font-size:10px}.frame{min-height:calc(100svh - 124px)}.choice-grid{gap:12px;margin-top:21px}.choice{min-height:188px;padding:15px}.choice-icon{width:53px;height:53px;font-size:31px;border-radius:15px;margin:7px 0 10px}.choice strong{font-size:23px}.choice small{font-size:12px}.choice::after{width:27px;height:27px;right:10px;bottom:10px;font-size:15px}.choice-kicker{font-size:9px}.letter{transform:none}}
+    @media(max-width:620px){.choice-grid{grid-template-columns:1fr;max-width:500px}.choice{min-height:105px;display:grid;grid-template-columns:66px 1fr 30px;grid-template-rows:auto auto auto;align-items:center;column-gap:14px;padding:15px}.choice-kicker{grid-column:2;grid-row:1}.choice-icon{grid-column:1;grid-row:1/4;margin:0}.choice strong{grid-column:2;grid-row:2;font-size:24px;margin:0}.choice small{grid-column:2;grid-row:3;max-width:none}.choice::before{width:100px;height:100px;right:-50px;top:-50px}.choice::after{position:static;grid-column:3;grid-row:1/4}.site-footer span:last-child{display:none}}
+    @media(max-width:420px){.brand-logo{width:88px}.brand strong{font-size:9px}.brand-divider{margin:0 -4px}.choice{grid-template-columns:52px 1fr 28px;gap:10px}.choice-icon{width:50px;height:50px}.choice strong{font-size:21px}.choice small{font-size:11px}.name-row button{width:100%}}
+    /* Keep tall scenes below the header, including short laptop viewports. */
+    .frame{align-items:flex-start;padding-top:clamp(22px,4vh,42px);padding-bottom:34px}
+    .scene{flex-shrink:0}
+    #scene-gift .stage-top{margin-bottom:14px}
+    #scene-gift .gift-illustration{min-height:260px}
+    #scene-gift .stage-actions{margin-top:8px}
+    @media(min-height:850px) and (min-width:761px){.frame{align-items:safe center}}
+    @media(max-height:760px){.frame{align-items:flex-start;padding-top:18px}.stage-top{margin-bottom:16px}.stage-top h2{font-size:clamp(39px,6vw,61px)}#scene-gift .gift-illustration{min-height:230px}#scene-gift .gift-orbit{width:270px;height:270px}}
+    /* Show every collected wish as a large, readable reward. */
+    .game-field{isolation:isolate}
+    .game-count{top:16px;left:16px;transform:none;z-index:4}
+    .wish-toast{position:absolute;z-index:7;left:50%;top:50%;width:max-content;min-width:min(78%,360px);max-width:calc(100% - 34px);min-height:0;margin:0;padding:18px 24px;border:3px solid var(--ink);border-radius:20px;background:#fffdf6;color:var(--ink);box-shadow:8px 9px 0 var(--ink);font:850 clamp(23px,3.6vw,39px) var(--font);line-height:1.18;text-align:center;opacity:0;visibility:hidden;pointer-events:none;transform:translate(-50%,-42%) scale(.88);transition:opacity .18s,transform .3s cubic-bezier(.2,1.5,.3,1),visibility .18s}
+    .wish-toast.show{opacity:1;visibility:visible;transform:translate(-50%,-50%) scale(1)}
+    @media(max-width:620px){.wish-toast{min-width:calc(100% - 44px);padding:15px 18px;font-size:clamp(21px,6vw,30px)}.game-count{font-size:12px;padding:7px 11px}}
+    /* A single tap starts the lotus bloom, then fireworks reveal the letter route. */
+    .garden{isolation:isolate}
+    .bloom-svg{transition:opacity .75s,transform 1.05s cubic-bezier(.16,1.35,.28,1)}
+    .garden[data-growth="1"] .bloom-svg{opacity:.55;transform:translateY(28px) scale(.48)}
+    .garden[data-growth="2"] .bloom-svg{opacity:.86;transform:translateY(10px) scale(.78)}
+    .garden[data-growth="3"] .bloom-svg{opacity:1;transform:translateY(-2px) scale(1.12)}
+    .fireworks-layer{position:absolute;inset:0;z-index:8;overflow:hidden;pointer-events:none}
+    .firework-spark{position:absolute;left:var(--sx);top:var(--sy);width:9px;height:9px;border-radius:50%;background:var(--spark-color);box-shadow:0 0 10px var(--spark-color);animation:fireworkFly 1.25s cubic-bezier(.13,.55,.3,1) forwards}
+    .firework-spark:nth-child(3n){width:6px;height:13px;border-radius:3px}
+    @keyframes fireworkFly{0%{opacity:0;transform:translate(-50%,-50%) scale(.2)}15%{opacity:1}100%{opacity:0;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(.5)}}
+
+    /* 20/10 garden edition. Gift artwork has its own layout space: no negative overlap with the copy. */
+    .brand-logo[hidden]{display:none!important}
+    #scene-gift .stage-wrap{max-width:860px}
+    #scene-gift .stage-top{margin-bottom:0}
+    #scene-gift .stage-top h2{margin:10px 0 12px;font-size:clamp(39px,6.5vw,72px)}
+    #scene-gift .stage-top .lead{max-width:680px;line-height:1.5}
+    #scene-gift .gift-illustration{height:332px;min-height:0;margin:25px auto 5px;width:min(100%,440px);display:grid;place-items:center;isolation:isolate}
+    #scene-gift .gift-orbit{width:302px;height:302px;inset:auto;left:calc(50% - 151px);top:calc(50% - 151px);z-index:-1}
+    #scene-gift .gift-present{position:relative;width:168px;height:134px;transform:translateY(24px) rotate(-4deg);animation:giftBob 4.4s ease-in-out infinite alternate}
+    #scene-gift .gift-box{width:168px;height:134px;transform:none}
+    #scene-gift .gift-bow{top:-79px;left:50%;transform:translateX(-50%);font-size:88px;line-height:1.1;white-space:nowrap;z-index:2}
+    #scene-gift .gift-twinkle{position:absolute;color:#e8a324;font-size:27px;animation:twinkleGift 2.8s ease-in-out infinite alternate}
+    #scene-gift .gift-twinkle-one{left:15%;top:27%}#scene-gift .gift-twinkle-two{right:14%;bottom:28%;font-size:21px;animation-delay:1.2s}
+    #scene-gift .stage-actions{margin:4px 0 15px}
+    @keyframes giftBob{to{transform:translateY(14px) rotate(-2deg)}}
+    @keyframes twinkleGift{from{opacity:.55;transform:rotate(-10deg) scale(.7)}to{opacity:1;transform:rotate(18deg) scale(1.12)}}
+
+    /* Hand-drawn vector meadow and sequenced bloom, butterflies, then rainbow. */
+    #scene-garden .garden-wrap{max-width:930px}
+    #scene-garden .stage-top{margin-bottom:25px}
+    #scene-garden .stage-top h2{margin:10px 0 12px;font-size:clamp(37px,5.8vw,67px)}
+    #scene-garden .stage-top .lead{max-width:720px}
+    #scene-garden .garden{height:auto;aspect-ratio:1000 / 510;min-height:340px;max-width:930px;width:100%;margin:0 auto;overflow:hidden;position:relative;isolation:isolate;border:2px solid var(--ink);border-radius:28px;background:#cfece0;box-shadow:8px 9px 0 #1722381f}
+    #scene-garden .garden::before{content:none}
+    .garden-world{position:absolute;inset:0;width:100%;height:100%;display:block}
+    .garden-cloud{animation:cloudGlide 12s ease-in-out infinite alternate;transform-origin:center}
+    .garden-cloud.cloud-right{animation-duration:15s;animation-direction:alternate-reverse}
+    .garden-sun{animation:skyGlow 4s ease-in-out infinite alternate;transform-origin:732px 102px}
+    .garden-rainbow path{opacity:0;stroke-dasharray:1280;stroke-dashoffset:1280;transition:opacity 1.1s ease,stroke-dashoffset 2.4s cubic-bezier(.24,.67,.26,1)}
+    .garden.phase-rainbow .garden-rainbow path{opacity:.8;stroke-dashoffset:0}
+    .garden.phase-rainbow .garden-rainbow path:nth-child(2){transition-delay:.11s}
+    .garden.phase-rainbow .garden-rainbow path:nth-child(3){transition-delay:.22s}
+    .garden.phase-rainbow .garden-rainbow path:nth-child(4){transition-delay:.33s}
+    .garden.phase-rainbow .garden-rainbow path:nth-child(5){transition-delay:.44s}
+    .garden.phase-rainbow .garden-rainbow path:nth-child(6){transition-delay:.55s}
+    .flower-stem{fill:none;stroke:#417f60;stroke-linecap:round;stroke-dasharray:240;stroke-dashoffset:240;transition:stroke-dashoffset 1.1s cubic-bezier(.26,.7,.2,1) var(--d)}
+    .flower-leaf{opacity:0;transform-box:fill-box;transform-origin:center bottom;transform:scale(.15);transition:transform .65s cubic-bezier(.15,1.5,.35,1) calc(var(--d) + 350ms),opacity .5s ease calc(var(--d) + 350ms)}
+    .flower-bloom{opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(.15) rotate(-40deg);transition:transform .9s cubic-bezier(.16,1.5,.27,1) calc(var(--d) + 580ms),opacity .6s ease calc(var(--d) + 580ms)}
+    .garden.phase-grow .flower-stem{stroke-dashoffset:0}
+    .garden.phase-grow .flower-leaf{opacity:1;transform:scale(1)}
+    .garden.phase-grow .flower-bloom{opacity:1;transform:scale(1) rotate(0)}
+    .garden.phase-grow .flower-sway{transform-box:fill-box;transform-origin:50% 100%;animation:flowerSway var(--sway) ease-in-out infinite alternate;animation-delay:calc(var(--d) + 1600ms)}
+    .garden-butterfly{opacity:0;transform-box:view-box;transition:opacity 1.1s ease}
+    .garden.phase-butterflies .garden-butterfly{opacity:1}
+    .garden.phase-butterflies .butterfly-one{animation:butterflyRouteOne 10s ease-in-out infinite alternate}
+    .garden.phase-butterflies .butterfly-two{animation:butterflyRouteTwo 11.4s ease-in-out infinite alternate}
+    .garden.phase-butterflies .butterfly-three{animation:butterflyRouteThree 9.3s ease-in-out infinite alternate}
+    .butterfly-wing{transform-box:fill-box;transform-origin:center center;animation:wingFlutter .45s ease-in-out infinite alternate}
+    .butterfly-wing.right-wing{animation-delay:-.13s}
+    .garden-glimmer{opacity:0;transform-box:fill-box;transform-origin:center;transition:opacity .8s ease}
+    .garden.phase-butterflies .garden-glimmer{opacity:1;animation:glimmer 2.4s ease-in-out infinite alternate;animation-delay:var(--glimmer-delay)}
+    .growth-counter{z-index:9;position:absolute;top:18px;left:18px;max-width:calc(100% - 36px);padding:9px 15px;border:2px solid #172238;border-radius:99px;background:#fffdf6ed;color:var(--ink);font-size:clamp(11px,1.5vw,13px);font-weight:800;text-align:left;box-shadow:3px 4px 0 #17223815}
+    .garden-caption{position:absolute;z-index:8;right:18px;bottom:15px;padding:6px 11px;border-radius:10px;color:#faffef;background:#2f775e8c;font-weight:700;font-size:12px;letter-spacing:.015em;text-shadow:0 1px 2px #1b4d37}
+    .garden-seed-button{position:absolute;z-index:10;left:50%;bottom:13%;transform:translateX(-50%);width:128px;height:115px;padding:0;border:none;background:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;filter:drop-shadow(0 9px 7px #2d765655);transition:opacity .35s,transform .5s}
+    .garden-seed-button:hover{transform:translateX(-50%) scale(1.05)}
+    .seed-icon{position:relative;z-index:1;display:grid;place-items:center;width:56px;height:56px;border:3px solid #fffdf8;border-radius:50%;background:linear-gradient(135deg,#ffb9a7,#ed6979);box-shadow:0 3px 0 #cc5364;color:white;font-size:32px;transform:rotate(-12deg);animation:seedPulse 1.9s ease-in-out infinite alternate}
+    .seed-aura{position:absolute;top:6px;left:50%;width:86px;height:86px;margin-left:-43px;border:2px dashed #fff4c8a8;border-radius:50%;animation:spin 13s linear infinite}
+    .seed-hint{position:relative;color:#fffdf6;font-size:11px;font-weight:800;text-shadow:0 2px 7px #255441,0 1px 3px #255441;white-space:nowrap}
+    .garden.is-playing .garden-seed-button,.garden.is-finished .garden-seed-button{opacity:0;pointer-events:none;transform:translateX(-50%) translateY(42px) scale(.55)}
+    .garden-actions{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;align-items:center;margin:22px 0 4px;min-height:55px}
+    #scene-garden .envelope-button{margin:0;display:none}
+    #scene-garden .envelope-button.visible{display:inline-flex}
+    .garden-replay[hidden]{display:none}
+    .garden.no-motion .flower-stem,.garden.no-motion .flower-leaf,.garden.no-motion .flower-bloom,.garden.no-motion .garden-rainbow path{transition:none!important}
+    .garden.no-motion .flower-sway,.garden.no-motion .garden-butterfly,.garden.no-motion .butterfly-wing,.garden.no-motion .garden-glimmer{animation:none!important}
+    @keyframes cloudGlide{to{transform:translateX(26px)}}
+    @keyframes skyGlow{to{transform:scale(1.08);opacity:.72}}
+    @keyframes seedPulse{to{transform:rotate(7deg) scale(1.09)}}
+    @keyframes flowerSway{from{transform:rotate(-3deg)}to{transform:rotate(3deg)}}
+    @keyframes wingFlutter{from{transform:scaleX(1)}to{transform:scaleX(.32)}}
+    @keyframes butterflyRouteOne{0%{transform:translate(140px,315px) rotate(-12deg) scale(.47)}25%{transform:translate(270px,188px) rotate(13deg) scale(.5)}55%{transform:translate(550px,150px) rotate(-10deg) scale(.48)}100%{transform:translate(790px,242px) rotate(15deg) scale(.5)}}
+    @keyframes butterflyRouteTwo{0%{transform:translate(840px,304px) rotate(17deg) scale(.4)}32%{transform:translate(696px,159px) rotate(-10deg) scale(.42)}65%{transform:translate(449px,242px) rotate(7deg) scale(.4)}100%{transform:translate(235px,147px) rotate(-9deg) scale(.44)}}
+    @keyframes butterflyRouteThree{0%{transform:translate(468px,340px) rotate(-7deg) scale(.32)}35%{transform:translate(550px,225px) rotate(14deg) scale(.37)}64%{transform:translate(664px,320px) rotate(-13deg) scale(.35)}100%{transform:translate(861px,166px) rotate(8deg) scale(.38)}}
+    @keyframes glimmer{0%,100%{opacity:.28;transform:scale(.65)}45%{opacity:1;transform:scale(1.24)}}
+    @media(max-width:760px){
+      #scene-gift .stage-top h2{font-size:clamp(39px,10vw,61px)}
+      #scene-gift .gift-illustration{height:292px;margin:20px auto 4px}
+      #scene-gift .gift-orbit{width:266px;height:266px;left:calc(50% - 133px);top:calc(50% - 133px)}
+      #scene-gift .gift-present{transform:translateY(22px) rotate(-4deg)}
+      #scene-gift .gift-box{width:150px;height:124px}
+      #scene-gift .gift-present{width:150px;height:124px}
+      #scene-garden .stage-top{margin-bottom:18px}
+      #scene-garden .garden{aspect-ratio:1.42;min-height:305px}
+      #scene-garden .stage-top h2{font-size:clamp(35px,9vw,53px)}
+      #scene-garden .garden-caption{max-width:170px;text-align:right;font-size:10px;bottom:8px;right:8px}
+      #scene-garden .garden-seed-button{bottom:11%}
+      #scene-garden .growth-counter{top:10px;left:10px;max-width:calc(100% - 20px)}
+    }
+    @media(max-width:420px){#scene-gift .gift-illustration{height:267px}#scene-gift .gift-orbit{width:246px;height:246px;left:calc(50% - 123px);top:calc(50% - 123px)}#scene-garden .garden{min-height:290px}#scene-garden .growth-counter{font-size:10px;padding:7px 10px}#scene-garden .garden-caption{font-size:9px}}
+    @media(prefers-reduced-motion:reduce){.garden-cloud,.garden-sun,.seed-icon,.seed-aura,#scene-gift .gift-present,#scene-gift .gift-twinkle{animation:none!important}.garden.phase-grow .flower-sway,.garden.phase-butterflies .garden-butterfly,.garden.phase-butterflies .garden-glimmer,.butterfly-wing{animation:none!important}.garden.phase-butterflies .butterfly-one{transform:translate(280px,215px) scale(.45)}.garden.phase-butterflies .butterfly-two{transform:translate(710px,200px) scale(.43)}.garden.phase-butterflies .butterfly-three{transform:translate(530px,290px) scale(.35)}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+
+    /* Long 20/10 greetings: a responsive, keyboard-accessible reading surface. */
+    .floating-heart{left:min(var(--x),calc(100% - 76px))}
+    .wish-dialog{border:0;padding:0;margin:auto;width:min(540px,calc(100% - 30px));max-width:540px;max-height:min(82dvh,690px);max-height:min(82vh,690px);overflow-y:auto;overflow-x:visible;border-radius:24px;background:#fffef8;color:var(--ink);box-shadow:0 24px 90px #17223855,7px 8px 0 #172238;overscroll-behavior:contain}
+    .wish-dialog::backdrop{background:#17223888;backdrop-filter:blur(4px)}
+    .wish-dialog[open]{animation:wishOpen .32s cubic-bezier(.2,1.25,.3,1) both}
+    .wish-dialog-card{border:2px solid var(--ink);border-radius:22px;padding:clamp(20px,5vw,36px);background:radial-gradient(circle at 95% 0%,#fff0c6 0%,transparent 40%),#fffdf6;text-align:left}
+    .wish-dialog-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;gap:12px}
+    .wish-dialog-count{display:inline-block;border:2px solid var(--ink);border-radius:100px;padding:7px 12px;background:#ffda7a;font-size:11px;font-weight:900;letter-spacing:.07em}
+    .wish-dialog-star{font-size:32px;color:var(--rose);animation:giftTwinkle 2.3s ease-in-out infinite alternate}
+    .wish-dialog h3{font-size:clamp(22px,4.7vw,29px);letter-spacing:-.05em;line-height:1.2;margin:0 0 20px;font-weight:900;color:var(--ink)}
+    .wish-dialog-quote{font-size:clamp(17px,3.4vw,22px);line-height:1.55;font-weight:650;letter-spacing:-.02em;color:#394758;border-left:5px solid var(--rose);padding:6px 0 6px 17px;margin:0 0 22px;overflow-wrap:break-word}
+    .wish-dialog-bottom{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+    .wish-dialog-note{color:#6e7d88;font-size:12px;line-height:1.4;max-width:220px}
+    .wish-dialog-close{white-space:normal;text-align:center}
+    @keyframes wishOpen{from{opacity:0;transform:translateY(18px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+    @media(max-width:620px){.floating-heart{left:min(var(--x),calc(100% - 69px))}.wish-dialog-card{padding:21px}.wish-dialog-bottom{flex-direction:column;align-items:stretch}.wish-dialog-note{text-align:center;max-width:unset}.wish-dialog-bottom button{width:100%;min-height:50px}}
+    @media(prefers-reduced-motion:reduce){.wish-dialog[open],.wish-dialog-star{animation:none!important}}
+    /* Pink editorial direction: real imagery, restrained surfaces, and one floral species. */
+    :root{--ink:#372832;--muted:#806771;--rose:#d67596;--rose-dark:#a73f67;--blush:#f6dce5;--cream:#fff9fb;--gold:#c985a0;--shadow:0 22px 55px #8746641c;--font:Georgia,'Times New Roman',serif}
+    html,body{background:#f9edf2;color:var(--ink)}
+    .app,.app.garden-mode,.app.letter-mode{background:radial-gradient(circle at 82% 18%,#f2cfdf 0,transparent 28%),radial-gradient(circle at 12% 82%,#ffe8ee 0,transparent 35%),linear-gradient(145deg,#fff9fb,#f6e3eb 72%,#f5e8ed)}
+    .app::before{opacity:.12;background-image:radial-gradient(#8b5369 1px,transparent 1px)}
+    .site-header{border-color:#d8b9c5;background:#fff9fbdc}
+    .brand strong,.date-label{color:#744459}.brand-divider{background:#cda5b5}
+    h1,h2{font-family:var(--font);font-weight:400;letter-spacing:-.052em;line-height:1.08}.accent{font-style:italic;color:var(--rose-dark)}
+    .lead{color:#6f5862}.eyebrow{color:var(--rose-dark);letter-spacing:.16em}.eyebrow::before,.center .eyebrow::before{width:25px;height:1px;border-radius:0;background:var(--rose-dark)}
+    .primary,.secondary{border:1px solid #a74267;border-radius:99px;box-shadow:0 9px 22px #9f547328;font-weight:650;letter-spacing:.01em}
+    .primary{background:#ad466f;color:#fff}.secondary{background:#fff9fb;color:#9e3e63}.primary:hover,.secondary:hover{transform:translateY(-2px);box-shadow:0 13px 26px #9f547335}
+    .name-card{border:1px solid #e4c6d1;background:#fffafbdf;box-shadow:0 24px 55px #9f547326}.name-card label{color:#694b58}.name-row input{border:1px solid #d8b7c5;background:#fffafc;color:var(--ink)}.name-row input:focus{border-color:#a74267}.footnote,.hint{color:#826873}
+    .sound-btn{border:1px solid #bb8ca0;border-radius:50%;background:#fff6fa;color:#8d4563}.sound-btn[aria-pressed="true"]{background:#a74267;color:#fff}
+    .hero-art{filter:none}.hero-art::before,.hero-art::after{display:none}.earth-orbit{position:absolute;border:1px solid #c98ba780;border-radius:50%;inset:3%;transform:rotate(-19deg)}.earth-orbit-one{box-shadow:0 0 0 24px #f9e7ee75,0 0 0 60px #fff9fb45}.earth-orbit-two{inset:18% -2%;transform:rotate(26deg);border-color:#d4a3b782}.earth-glow{position:absolute;inset:20%;border-radius:50%;background:#e7a5c0;filter:blur(34px);opacity:.62}.hero-earth{position:relative;width:74%;height:74%;object-fit:contain;filter:grayscale(.22) sepia(.85) saturate(1.45) hue-rotate(298deg) contrast(1.04) brightness(1.03) drop-shadow(0 26px 35px #8f43664a);animation:earthFloat 8s ease-in-out infinite alternate}.earth-caption{position:absolute;bottom:4%;font:italic 16px var(--font);letter-spacing:.18em;color:#9d5674}
+    @keyframes earthFloat{to{transform:translateY(-12px) rotate(3deg)}}
+    .gift-orbit{border-color:#d6a4b9}.gift-orbit::before,.gift-orbit::after{color:#bb6d8c}.gift-box{background:linear-gradient(135deg,#e7abc0,#bd688b);box-shadow:0 24px 35px #9f547345}.gift-box::before{background:#f4ccd8;box-shadow:0 7px 16px #9f547326}.gift-bow{color:#ae5277}
+    .heart-shape{background:radial-gradient(circle at 33% 24%,#ffeef3 0,#efacc2 40%,#cb6f95 76%,#a9446e 100%)}.game-field{border:1px solid #d8b9c5;background:linear-gradient(135deg,#fff9fb,#f5d9e5);box-shadow:0 18px 45px #9f54731c}.floating-heart,.floating-heart:nth-child(3n),.floating-heart:nth-child(4n){border:1px solid #e8c6d5;background:#fffafb;color:#b7577d;box-shadow:0 9px 25px #9f547329}.game-count{border:1px solid #d8b9c5;background:#fff8fb;color:#8d4563}
+    .choice,.choice[data-wish="happiness"],.choice[data-wish="peace"],.choice[data-wish="luck"]{border:1px solid #e1bfcd;background:#fff9fb;box-shadow:0 16px 34px #9f54731c}.choice[data-wish="peace"]{background:#fbeaf1}.choice[data-wish="luck"]{background:#f8e0ea}.choice:hover,.choice:focus-visible{transform:translateY(-4px);box-shadow:0 23px 40px #9f54732b}.choice::before{border-color:#dfbdcb}.choice::after{border:1px solid #c48aa2;color:#9c4768}.choice-kicker{color:#9c4768}.choice-icon{width:auto;height:auto;padding:0;border:0;background:none;color:#bf7c98;font:italic 35px var(--font)}.choice strong{font-family:var(--font);font-weight:400;color:#543443}.choice small{color:#795e6b}
+    #scene-garden .garden{border:1px solid #bc8ba0;border-radius:26px;background:#271720;box-shadow:0 24px 54px #57283d3d}.garden-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 45%;display:block;filter:brightness(.48) saturate(.75) blur(8px);transform:scale(1.06);transition:filter 1.6s ease,transform 3.8s cubic-bezier(.2,.8,.2,1)}.garden.phase-grow .garden-photo{filter:brightness(.83) saturate(.95) blur(2px);transform:scale(1.02)}.garden.phase-butterflies .garden-photo,.garden.is-finished .garden-photo{filter:brightness(1) saturate(1.04) blur(0);transform:scale(1)}.garden-photo-shade{position:absolute;inset:0;background:linear-gradient(90deg,#25151f75,transparent 36%,transparent 75%,#25151f3d);pointer-events:none}.garden-caption{background:#351b2ab8;color:#fff6fa;text-shadow:none;font-weight:500;letter-spacing:.03em}.growth-counter{border:1px solid #f0d6e0;background:#fff9fbe8;color:#723e55;box-shadow:0 8px 22px #24121c38}.seed-icon{border:1px solid #fff8fb;background:#b4567a;font:italic 26px var(--font)}.seed-aura{border-color:#f2d1df}.seed-hint{font-weight:650;text-shadow:0 2px 7px #24121c}
+    .envelope-art::before{background:#e9b5c8}.envelope-art::after{background:#f6d7e2}.envelope-seal{background:#a74267}.letter{border:1px solid #deb9c9;background:#fffafc;box-shadow:0 26px 65px #9f54732b}.letter::before{border-color:#ebd0db}.letter::after{content:"";width:58px;height:58px;right:24px;top:20px;background:url('/assets/pink-lilies.jpg') center / cover;border-radius:50%;border:2px solid #fff3f8;box-shadow:0 4px 12px #8d45632b}.letter p{color:#5d4551}.letter .salutation,.letter .signature{font-family:var(--font);color:#9d4266}.site-footer{border-color:#ddbcca;background:#fff8fbb8;color:#876777}.progress span{background:#e1c4cf}.progress span.current{background:#a74267}.progress span.done{background:#c885a0}
+    .wish-dialog{background:#fff9fb;border:1px solid #d7adbe}.wish-dialog-card{border:1px solid #e2c1ce;background:#fff9fb}.wish-dialog-count{border:1px solid #c996aa;background:#f8dfe9;color:#8d4563}.wish-dialog-quote{border-color:#bd7391;color:#513c47}.wish-dialog-note{color:#806771}
+    @media(max-width:760px){.scene-grid .hero-art{width:min(64vw,280px)}.hero-earth{width:77%;height:77%}.earth-caption{bottom:0;font-size:11px}.choice-icon{font-size:29px}}
+    @media(prefers-reduced-motion:reduce){.hero-earth{animation:none}.garden-photo{transition:none}}
+    /* A personal flower palette follows the recipient from selection to saved card. */
+    .app{--flower-accent:#b34d78;--flower-dark:#8d315a;--flower-pale:#f7e1e9;--flower-haze:#eed0de;--flower-image:url('/assets/pink-lilies.jpg')}
+    .app[data-flower]{--rose:var(--flower-accent);--rose-dark:var(--flower-dark);--blush:var(--flower-pale);background:radial-gradient(circle at 82% 17%,var(--flower-haze) 0,transparent 30%),radial-gradient(circle at 12% 82%,var(--flower-pale) 0,transparent 38%),linear-gradient(145deg,#fffdfd,var(--flower-pale) 75%,#fffaf8)}
+    .app[data-flower] .site-header,.app[data-flower] .site-footer{border-color:color-mix(in srgb,var(--flower-accent) 28%,white);background:color-mix(in srgb,var(--flower-pale) 35%,white)}
+    .app[data-flower] .brand strong,.app[data-flower] .date-label,.app[data-flower] .eyebrow,.app[data-flower] .accent,.app[data-flower] .letter .salutation,.app[data-flower] .letter .signature{color:var(--flower-dark)}
+    .app[data-flower] .eyebrow::before,.app[data-flower] .progress span.current{background:var(--flower-accent)}
+    .app[data-flower] .progress span.done{background:color-mix(in srgb,var(--flower-accent) 58%,white)}
+    .app[data-flower] .primary{background:var(--flower-dark);border-color:var(--flower-dark);color:white;box-shadow:0 9px 22px color-mix(in srgb,var(--flower-accent) 28%,transparent)}
+    .app[data-flower] .secondary{color:var(--flower-dark);border-color:var(--flower-accent);background:#fffdfd}
+    .app[data-flower] .sound-btn[aria-pressed="true"],.app[data-flower] .envelope-seal,.app[data-flower] .seed-icon{background:var(--flower-accent)}
+    .app[data-flower] .game-field{background:radial-gradient(circle at 40% 35%,#fff 0,var(--flower-pale) 90%);border-color:var(--flower-haze)}
+    .app[data-flower] .floating-heart{color:var(--flower-dark);border-color:var(--flower-haze)}
+    .app[data-flower] .game-count,.app[data-flower] .growth-counter,.app[data-flower] .wish-dialog-count{color:var(--flower-dark);background:var(--flower-pale);border-color:var(--flower-haze)}
+    .app[data-flower] .choice.selected{outline-color:var(--flower-accent)}
+    .app[data-flower] .choice[data-wish="peace"]{background:color-mix(in srgb,var(--flower-pale) 58%,white)}
+    .app[data-flower] .choice[data-wish="luck"]{background:var(--flower-pale)}
+    .app[data-flower] .choice-icon,.app[data-flower] .choice-kicker{color:var(--flower-dark)}
+    .app[data-flower] .gift-orbit{border-color:var(--flower-accent)}
+    .app[data-flower] .gift-box{background:linear-gradient(135deg,var(--flower-haze),var(--flower-accent))}
+    .app[data-flower] .gift-box::before{background:var(--flower-pale)}
+    .app[data-flower] .gift-bow,.app[data-flower] .letter-date{color:var(--flower-dark)}
+    .app[data-flower] .letter{border-color:var(--flower-haze);box-shadow:0 26px 65px color-mix(in srgb,var(--flower-accent) 24%,transparent)}
+    .app[data-flower] .letter::before{border-color:var(--flower-haze)}
+    .app[data-flower] .letter::after{background-image:var(--flower-image);border-color:var(--flower-pale)}
+    .app[data-flower] #scene-garden .garden{border-color:var(--flower-accent)}
+    .app[data-flower] .wish-dialog-quote{border-color:var(--flower-accent)}
+    .flower-wrap{max-width:1100px}.flower-wrap .stage-top{margin-bottom:28px}.flower-wrap .stage-top .lead{max-width:700px}
+    .flower-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:15px;margin:0 auto 18px}
+    .flower-card{display:flex;flex-direction:column;align-items:flex-start;padding:0 0 17px;text-align:left;background:#fffdfd;border:1px solid #dfcbd3;border-radius:19px;overflow:hidden;color:var(--ink);box-shadow:0 15px 33px #743b571b;transition:transform .2s,box-shadow .2s,border-color .2s}
+    .flower-card:hover,.flower-card:focus-visible{transform:translateY(-5px);box-shadow:0 23px 38px #743b572c;border-color:var(--rose-dark)}
+    .flower-card img{display:block;width:100%;height:190px;object-fit:cover;background:#f8eef2}.flower-card[data-flower="baby"] img{object-position:center 40%}.flower-card[data-flower="rose"] img{object-position:center 42%}
+    .flower-card-name{padding:15px 15px 0;font:26px var(--font);line-height:1.1}.flower-card-color{padding:6px 15px 0;color:#806771;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+    .flower-card[data-flower="lily"]{--card-color:#b34d78}.flower-card[data-flower="rose"]{--card-color:#a83c50}.flower-card[data-flower="tulip"]{--card-color:#bb5f45}.flower-card[data-flower="baby"]{--card-color:#8b7370}.flower-card[data-flower="hydrangea"]{--card-color:#2d72a2}
+    .flower-card::after{content:"";width:34px;height:3px;margin:13px 15px 0;border-radius:3px;background:var(--card-color)}
+    .hold-ring{display:none}.heart-button{filter:drop-shadow(0 16px 20px #a24b6b35)}.heart-button:hover{transform:translateY(-3px);filter:drop-shadow(0 20px 24px #a24b6b45)}
+    .heart-shape,.heart-button.pressed .heart-shape{overflow:hidden;animation:none;background:#f6dce8;box-shadow:inset 0 0 20px #aa577033,0 13px 25px #a24b6b20}
+    .heart-shape::before{content:"";position:absolute;left:0;right:0;bottom:0;height:var(--fill-level,0%);background:linear-gradient(180deg,#f4abc7 0%,#dd83a8 52%,#bb4b7a 100%);box-shadow:0 -7px 18px #fce9f0a8;transition:height .04s linear}
+    .heart-button span.heart-label{color:#5d2943;text-shadow:0 1px 2px #fff9;font:700 17px system-ui,-apple-system,sans-serif}
+    .letter-wishes{margin:34px 0 22px;padding:23px 0 5px;border-top:1px solid var(--flower-haze);border-bottom:1px solid var(--flower-haze)}
+    .letter-wishes h3{font:italic 29px var(--font);color:var(--flower-dark);margin:0 0 14px}.letter-wishes ol{margin:0 0 16px;padding-left:24px}.letter-wishes li{font-size:15px;line-height:1.65;color:#644d58;margin:0 0 11px;padding-left:6px}.letter-wishes li::marker{color:var(--flower-accent);font-weight:700}
+    .secret-trigger{display:block;margin:15px 0 0 auto}.secret.visible{display:block}.save-help{max-width:680px;margin:8px auto 25px;text-align:center}
+    @media(max-width:900px){.flower-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.flower-card img{height:160px}}
+    @media(max-width:620px){.flower-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.flower-card img{height:132px}.flower-card-name{font-size:22px;padding:12px 12px 0}.flower-card-color{padding:5px 12px 0;font-size:10px}.flower-card::after{margin:10px 12px 0}.flower-card:last-child{grid-column:1/-1;justify-self:center;width:calc(50% - 5px)}.flower-wrap .stage-top{margin-bottom:20px}.letter-wishes h3{font-size:25px}}
+    @media(prefers-reduced-motion:reduce){.heart-shape::before{transition:none}}
+    /* The whole garden responds to a tap; the selected photograph opens like a bloom. */
+    .flower-card[data-flower="rose"]{--card-color:#b24578}.flower-card[data-flower="tulip"]{--card-color:#d04c84}
+    .flower-card[data-flower="tulip"] img{object-position:center 28%}.flower-card[data-flower="baby"] img{object-position:center 48%}.flower-card[data-flower="hydrangea"] img{object-position:center 36%}
+    #scene-garden .garden{cursor:pointer;touch-action:manipulation;background:radial-gradient(circle at 50% 58%,color-mix(in srgb,var(--flower-accent) 34%,#201825) 0%,#211923 63%,#15121c 100%)}
+    #scene-garden .garden:focus-visible{outline:3px solid var(--flower-accent);outline-offset:5px}
+    #scene-garden .garden-photo{z-index:1;object-fit:cover;clip-path:circle(0% at 50% 58%);filter:brightness(.68) saturate(.94) blur(7px);transform:scale(1.1);transition:clip-path 1.2s cubic-bezier(.18,.7,.2,1),filter 1.15s ease,transform 3s ease}
+    #scene-garden .garden.phase-grow .garden-photo{clip-path:circle(23% at 50% 56%);filter:brightness(.9) saturate(1.05) blur(1px);transform:scale(1.04)}
+    #scene-garden .garden.phase-butterflies .garden-photo{clip-path:circle(38% at 50% 53%);filter:brightness(1) saturate(1.06) blur(0);transform:scale(1.01)}
+    #scene-garden .garden.is-finished .garden-photo{clip-path:circle(95% at 50% 50%);filter:brightness(1.03) saturate(1.04) blur(0);transform:scale(1)}
+    #scene-garden .garden-photo-shade{z-index:2;background:radial-gradient(circle at 50% 53%,transparent 27%,#17101ea6 100%);opacity:.72;transition:opacity 1s ease}
+    #scene-garden .garden.is-finished .garden-photo-shade{opacity:.22}
+    #scene-garden .garden .growth-counter{z-index:9;pointer-events:none}
+    #scene-garden .garden-seed-button{pointer-events:none}
+    .garden-butterflies{position:absolute;inset:0;z-index:7;pointer-events:none}
+    .photo-butterfly{position:absolute;left:-8%;top:64%;width:46px;height:42px;opacity:0;filter:drop-shadow(0 4px 6px #180e2566);will-change:left,top,transform}
+    .photo-butterfly::before,.photo-butterfly::after{content:"";position:absolute;top:1px;width:26px;height:28px;border:1px solid #fff9;background:linear-gradient(135deg,#fffaf5 8%,var(--flower-pale) 48%,var(--flower-accent) 100%)}
+    .photo-butterfly::before{left:-1px;border-radius:85% 12% 60% 35%;transform-origin:100% 76%;animation:photoWingLeft .42s ease-in-out infinite alternate}
+    .photo-butterfly::after{right:-1px;border-radius:12% 85% 35% 60%;transform-origin:0 76%;animation:photoWingRight .42s ease-in-out infinite alternate}
+    .photo-butterfly i{position:absolute;z-index:1;left:21px;top:10px;width:4px;height:25px;border-radius:8px;background:#433344}
+    .photo-butterfly i::before,.photo-butterfly i::after{content:"";position:absolute;top:14px;width:16px;height:18px;background:linear-gradient(135deg,#f7e9ee,var(--flower-accent));border:1px solid #fff9}
+    .photo-butterfly i::before{right:2px;border-radius:65% 25% 70% 42%;transform:rotate(-25deg)}
+    .photo-butterfly i::after{left:2px;border-radius:25% 65% 42% 70%;transform:rotate(25deg)}
+    .photo-butterfly.butterfly-two{width:36px;height:33px;filter:drop-shadow(0 3px 5px #180e2566) hue-rotate(28deg)}
+    .photo-butterfly.butterfly-three{width:41px;height:38px;filter:drop-shadow(0 3px 5px #180e2566) hue-rotate(-30deg)}
+    .garden.phase-butterflies .photo-butterfly{opacity:1}
+    .garden.phase-butterflies .photo-butterfly.butterfly-one{animation:photoFlyOne 5.4s ease-in-out infinite}
+    .garden.phase-butterflies .photo-butterfly.butterfly-two{animation:photoFlyTwo 6.1s ease-in-out infinite;animation-delay:-.9s}
+    .garden.phase-butterflies .photo-butterfly.butterfly-three{animation:photoFlyThree 5.6s ease-in-out infinite;animation-delay:-1.7s}
+    svg.photo-butterfly{width:61px;height:56px;overflow:visible}
+    svg.photo-butterfly::before,svg.photo-butterfly::after{content:none}
+    svg.photo-butterfly.butterfly-two{width:48px;height:44px}
+    svg.photo-butterfly.butterfly-three{width:54px;height:49px}
+    .photo-wing{fill:color-mix(in srgb,var(--flower-pale) 74%,white);stroke:var(--flower-accent);stroke-width:1.8;stroke-linejoin:round;filter:drop-shadow(0 2px 2px #2b173455)}
+    .photo-wing-right{fill:color-mix(in srgb,var(--flower-accent) 40%,white)}
+    .photo-wing-left{transform-box:fill-box;transform-origin:right center;animation:svgWingLeft .48s ease-in-out infinite alternate}
+    .photo-wing-right{transform-box:fill-box;transform-origin:left center;animation:svgWingRight .48s ease-in-out infinite alternate}
+    .photo-body{fill:#443549}.photo-antenna{fill:none;stroke:#443549;stroke-width:2;stroke-linecap:round}
+    @keyframes svgWingLeft{to{transform:scaleX(.48)}}
+    @keyframes svgWingRight{to{transform:scaleX(.48)}}
+    @keyframes photoWingLeft{to{transform:rotateY(66deg) rotate(-9deg)}}
+    @keyframes photoWingRight{to{transform:rotateY(-66deg) rotate(9deg)}}
+    @keyframes photoFlyOne{0%{left:-8%;top:66%;transform:rotate(-16deg) scale(.8)}30%{left:26%;top:28%;transform:rotate(12deg) scale(1.1)}65%{left:67%;top:43%;transform:rotate(-9deg) scale(.85)}100%{left:106%;top:17%;transform:rotate(13deg) scale(1)}}
+    @keyframes photoFlyTwo{0%{left:108%;top:63%;transform:rotate(16deg) scale(.78)}35%{left:68%;top:24%;transform:rotate(-13deg) scale(1)}70%{left:33%;top:37%;transform:rotate(10deg) scale(.78)}100%{left:-10%;top:15%;transform:rotate(-15deg) scale(.9)}}
+    @keyframes photoFlyThree{0%{left:24%;top:110%;transform:rotate(-8deg) scale(.68)}40%{left:46%;top:53%;transform:rotate(14deg) scale(.88)}75%{left:71%;top:24%;transform:rotate(-10deg) scale(.75)}100%{left:90%;top:-15%;transform:rotate(6deg) scale(.9)}}
+    @media(prefers-reduced-motion:reduce){#scene-garden .garden-photo{transition:none}.photo-butterfly,.photo-wing{animation:none!important}.garden.phase-butterflies .photo-butterfly.butterfly-one{left:24%;top:28%}.garden.phase-butterflies .photo-butterfly.butterfly-two{left:72%;top:38%}.garden.phase-butterflies .photo-butterfly.butterfly-three{left:50%;top:68%}}
+    /* A small illustrated garden wakes up in four beats before the personal flower appears. */
+    .scene h1[tabindex="-1"]:focus,.scene h2[tabindex="-1"]:focus{outline:none}
+    #scene-garden .stage-top h2{font-size:clamp(38px,5.2vw,61px)}
+    #scene-garden .garden{border:1px solid color-mix(in srgb,var(--flower-accent) 48%,#fff);border-radius:34px;background:radial-gradient(circle at 70% 19%,#fffdf8 0,#fffdf800 32%),linear-gradient(180deg,#fae8f2 0%,color-mix(in srgb,var(--flower-pale) 72%,#fff) 58%,#e9ead8 100%);box-shadow:0 23px 50px #9d597429}
+    #scene-garden .garden::before,#scene-garden .garden::after{content:"";position:absolute;display:block;left:-8%;width:116%;height:45%;bottom:-26%;border-radius:50% 50% 0 0;pointer-events:none}
+    #scene-garden .garden::before{z-index:1;background:#c4d8b2;transform:rotate(-4deg)}
+    #scene-garden .garden::after{z-index:2;bottom:-33%;left:-3%;background:#b2cb9f;transform:rotate(5deg)}
+    .garden-sunshine{position:absolute;z-index:3;top:7%;right:13%;width:112px;height:112px;opacity:0;transform:scale(.35);transition:opacity .65s ease,transform .9s cubic-bezier(.2,1.5,.35,1);pointer-events:none}
+    .sun-rays{position:absolute;inset:-33px;border-radius:50%;background:repeating-conic-gradient(from 4deg,#f7ca70 0 7deg,transparent 8deg 24deg);mask:radial-gradient(circle,transparent 0 43%,#000 45% 70%,transparent 72%);-webkit-mask:radial-gradient(circle,transparent 0 43%,#000 45% 70%,transparent 72%);animation:sunWink 13s linear infinite}
+    .sun-core{position:absolute;inset:13px;border-radius:50%;background:radial-gradient(circle at 36% 31%,#fff9d9,#ffd884 68%,#f1ae69);box-shadow:0 0 0 13px #ffdf9580,0 0 55px 33px #ffdd91a3}
+    .garden.phase-sunshine .garden-sunshine{opacity:1;transform:scale(1)}
+    @keyframes sunWink{to{transform:rotate(360deg)}}
+    .garden-meadow{position:absolute;z-index:5;inset:0;pointer-events:none}
+    .garden-sprout{position:absolute;left:var(--x);bottom:-8%;width:8px;height:var(--h);border-radius:100% 100% 0 0;background:linear-gradient(90deg,#6f9a65,#91ad72);transform-origin:center bottom;transform:scaleY(0) rotate(var(--tilt));transition:transform 1s cubic-bezier(.16,1.55,.38,1) var(--d);box-shadow:2px 0 2px #62936421}
+    .garden.phase-grow .garden-sprout{transform:scaleY(1) rotate(var(--tilt))}
+    .garden-sprout::before,.garden-sprout::after{content:"";position:absolute;top:39%;width:29px;height:16px;background:#90b383;border-radius:95% 4% 95% 10%;opacity:0;transform:scale(.2);transition:opacity .4s ease calc(var(--d) + .45s),transform .6s cubic-bezier(.2,1.5,.3,1) calc(var(--d) + .45s)}
+    .garden-sprout::before{right:5px;transform-origin:right bottom;rotate:-22deg}
+    .garden-sprout::after{left:6px;top:57%;transform-origin:left bottom;rotate:150deg}
+    .garden.phase-grow .garden-sprout::before,.garden.phase-grow .garden-sprout::after{opacity:1;transform:scale(1)}
+    .garden-sprout i{position:absolute;top:-13px;left:-5px;width:19px;height:19px;border-radius:52% 48% 53% 47%;background:#f7bdcf;box-shadow:0 0 0 5px #fff0f3,0 0 0 9px #f6cbd7;opacity:0;transform:scale(.1);transition:opacity .4s ease calc(var(--d) + .65s),transform .7s cubic-bezier(.2,1.6,.3,1) calc(var(--d) + .65s)}
+    .garden-sprout:nth-child(3n) i{background:#fff7f6;box-shadow:0 0 0 5px #f7d9e1,0 0 0 9px #f2b9ca}
+    .garden-sprout:nth-child(4n) i{background:#f6d787;box-shadow:0 0 0 5px #fff6d8,0 0 0 9px #f8d8a7}
+    .garden.phase-grow .garden-sprout i{opacity:1;transform:scale(1)}
+    #scene-garden .garden .garden-photo,#scene-garden .garden.phase-grow .garden-photo,#scene-garden .garden.phase-butterflies .garden-photo,#scene-garden .garden.phase-sunshine .garden-photo{position:absolute;z-index:4;inset:auto;left:50%;top:49%;width:38%;height:75%;object-fit:cover;clip-path:none;filter:saturate(1.06) brightness(1.06);border:8px solid #fffafc;border-radius:48% 52% 48% 52% / 43% 46% 54% 57%;box-shadow:0 18px 34px #6c485a45;opacity:0;transform:translate(-50%,-39%) scale(.3) rotate(-14deg);transition:opacity .7s ease,transform 1.25s cubic-bezier(.18,1.48,.34,1),filter .7s ease}
+    #scene-garden .garden.phase-reveal .garden-photo,#scene-garden .garden.is-finished .garden-photo{opacity:1;transform:translate(-50%,-50%) scale(1) rotate(-3deg);filter:saturate(1.08) brightness(1.07)}
+    #scene-garden .garden-photo-shade{display:none}
+    #scene-garden .garden .growth-counter{background:#fffafcea;color:var(--flower-dark);box-shadow:0 8px 22px #9a5f7826}
+    #scene-garden .garden-caption{left:50%;right:auto;bottom:18px;max-width:80%;width:max-content;transform:translate(-50%,12px);opacity:0;border:1px solid #f4d8e2;border-radius:999px;background:#fffafbde;color:var(--flower-dark);font-size:13px;font-weight:700;text-shadow:none;text-align:center;transition:opacity .5s ease,transform .5s ease}
+    #scene-garden .garden.phase-reveal .garden-caption,#scene-garden .garden.is-finished .garden-caption{opacity:1;transform:translate(-50%,0)}
+    #scene-garden .garden-seed-button{bottom:12%;filter:drop-shadow(0 8px 13px #b9728a52)}
+    #scene-garden .seed-icon{background:linear-gradient(135deg,#f9c6d7,var(--flower-accent));color:#fff}
+    #scene-garden .seed-hint{padding:6px 10px;border-radius:99px;background:#fff9fbdd;color:var(--flower-dark);text-shadow:none;font-size:12px}
+    #scene-garden .garden-butterflies{z-index:7}
+    #scene-garden .photo-butterfly{filter:drop-shadow(0 3px 4px #73526855)}
+    .garden-message{max-width:780px;max-height:0;overflow:hidden;margin:0 auto;padding:0 16px;border:0 solid #efc9d8;border-radius:22px;background:#fff9fc;color:#795364;font:italic clamp(18px,2.35vw,25px)/1.45 var(--font);text-align:center;opacity:0;transform:translateY(10px);transition:max-height .7s ease,padding .7s ease,margin .7s ease,opacity .7s ease,transform .7s ease}
+    .garden-message strong{color:var(--flower-dark);font-weight:600}
+    .garden-message.visible{max-height:200px;margin:22px auto 0;padding:17px 24px;border-width:1px;box-shadow:0 12px 28px #9a5f781c;opacity:1;transform:translateY(0)}
+    .garden.no-motion .garden-sprout,.garden.no-motion .garden-sprout::before,.garden.no-motion .garden-sprout::after,.garden.no-motion .garden-sprout i,.garden.no-motion .garden-photo,.garden.no-motion .garden-sunshine,.garden.no-motion .garden-caption{transition:none!important}
+    @media(max-width:620px){#scene-garden .garden{aspect-ratio:1.17;min-height:315px}#scene-garden .garden .garden-photo,#scene-garden .garden.phase-grow .garden-photo,#scene-garden .garden.phase-butterflies .garden-photo,#scene-garden .garden.phase-sunshine .garden-photo{width:56%;height:64%;top:51%;border-width:6px}#scene-garden .garden-sunshine{top:10%;right:5%;width:76px;height:76px}.sun-rays{inset:-24px}.garden-sprout{width:6px}.garden-sprout::before,.garden-sprout::after{width:22px;height:13px}.garden-sprout i{width:15px;height:15px;left:-4px;top:-9px;box-shadow:0 0 0 4px #fff0f3,0 0 0 7px #f6cbd7}#scene-garden .garden-caption{font-size:11px;bottom:10px;max-width:90%}.garden-message.visible{margin-top:16px;padding:15px 18px}}
+    /* The chosen flower belongs to the closing of the letter. */
+    .letter::after{display:none}
+    .letter-flower-finale{width:min(100%,410px);margin:40px auto 0;padding:15px;background:linear-gradient(155deg,#fffdfd,var(--flower-pale));border:1px solid var(--flower-haze);border-radius:23px;box-shadow:0 14px 32px color-mix(in srgb,var(--flower-accent) 16%,transparent);text-align:center}
+    .letter-flower-finale img{background:#fff;display:block;max-width:100%;width:auto;height:auto;max-height:320px;margin:0 auto;border-radius:13px;object-fit:contain;box-shadow:0 7px 18px #37283225}
+    .letter-flower-finale figcaption{padding:14px 5px 3px;color:var(--flower-dark);font:italic 20px/1.35 var(--font)}
+    .letter-flower-finale strong{font-weight:600}
+    @media(max-width:620px){.letter-flower-finale{padding:11px;margin-top:28px}.letter-flower-finale img{max-height:290px}.letter-flower-finale figcaption{font-size:18px}}
+    /* Soft petal blooms, drifting clouds, and a smiling sun complete the little garden. */
+    .garden-cloudlet{position:absolute;z-index:3;width:104px;height:32px;border-radius:999px;background:#fffaf8c9;box-shadow:0 8px 18px #c8a6b128;pointer-events:none;animation:cloudletFloat 6s ease-in-out infinite alternate}
+    .garden-cloudlet::before,.garden-cloudlet::after{content:"";position:absolute;border-radius:50%;background:inherit}
+    .garden-cloudlet::before{width:47px;height:47px;left:17px;bottom:8px}
+    .garden-cloudlet::after{width:39px;height:39px;right:13px;bottom:7px}
+    .cloudlet-left{top:16%;left:11%}.cloudlet-right{top:33%;right:30%;width:80px;transform:scale(.75);opacity:.72;animation-delay:-2s}
+    @keyframes cloudletFloat{to{translate:15px -6px}}
+    .garden-sprout{width:7px;border-radius:60% 60% 0 0;background:linear-gradient(90deg,#74a16c,#9abc86)}
+    .garden-sprout i{--petal:color-mix(in srgb,var(--flower-accent) 22%,#f8bfd4);top:-31px;left:-19px;width:46px;height:46px;border-radius:50%;filter:drop-shadow(0 5px 4px #a869822b)}
+    .garden-sprout:nth-child(3n) i{--petal:#fff6ef}
+    .garden-sprout:nth-child(4n) i{--petal:#ffe1a9}
+    .garden-sprout i,.garden-sprout:nth-child(3n) i,.garden-sprout:nth-child(4n) i{background-image:radial-gradient(circle at 50% 50%,#f7dc95 0 10%,#e7ae68 11% 15%,transparent 16%),radial-gradient(ellipse 18% 23% at 50% 20%,var(--petal) 98%,transparent 100%),radial-gradient(ellipse 21% 18% at 81% 40%,var(--petal) 98%,transparent 100%),radial-gradient(ellipse 19% 23% at 68% 79%,var(--petal) 98%,transparent 100%),radial-gradient(ellipse 19% 23% at 32% 79%,var(--petal) 98%,transparent 100%),radial-gradient(ellipse 21% 18% at 19% 40%,var(--petal) 98%,transparent 100%);box-shadow:none}
+    .garden.phase-grow .garden-sprout{animation:sproutSway 3.8s ease-in-out 1.3s infinite alternate}
+    @keyframes sproutSway{to{transform:scaleY(1) rotate(calc(var(--tilt) + 4deg))}}
+    .sun-core{background:radial-gradient(circle at 39% 44%,#765744 0 2px,transparent 3px),radial-gradient(circle at 61% 44%,#765744 0 2px,transparent 3px),radial-gradient(circle at 26% 61%,#f6b6a0 0 5px,transparent 6px),radial-gradient(circle at 74% 61%,#f6b6a0 0 5px,transparent 6px),radial-gradient(circle at 36% 31%,#fff9d9,#ffd884 68%,#f1ae69)}
+    .sun-core::after{content:"";position:absolute;left:40%;top:48%;width:20%;height:16%;border-bottom:3px solid #a76e4e;border-radius:0 0 50% 50%}
+    #scene-garden .photo-wing{stroke:color-mix(in srgb,var(--flower-accent) 80%,#b5618b);stroke-width:2.2}
+    @media(max-width:620px){.garden-cloudlet{width:67px;height:22px}.garden-cloudlet::before{width:31px;height:31px;left:10px;bottom:6px}.garden-cloudlet::after{width:26px;height:26px;right:8px;bottom:5px}.cloudlet-left{top:18%;left:8%}.cloudlet-right{top:35%;right:26%}.garden-sprout i{top:-20px;left:-11px;width:29px;height:29px;box-shadow:none}}
+    @media(prefers-reduced-motion:reduce){.garden-cloudlet,.garden.phase-grow .garden-sprout{animation:none!important}}
+    @media(prefers-reduced-motion:reduce){.garden-sunshine,.garden-sprout,.garden-sprout::before,.garden-sprout::after,.garden-sprout i,.garden-message,.garden-caption{transition:none!important}.sun-rays{animation:none!important}}
+    /* A compact, full-screen chapter layout for laptop displays. */
+    .letter{font-family:Mali,'Comic Sans MS',cursive}
+    .letter h2,.letter .salutation,.letter .signature,.letter-wishes h3,.letter .secret,.letter-flower-finale figcaption{font-family:Mali,'Comic Sans MS',cursive!important}
+    .letter p{line-height:1.6}
+    .letter .salutation{font-style:normal}
+    .letter .signature{font-style:normal}
+    .letter-wishes h3{font-style:normal}
+    .letter-wishes li{font-family:Mali,'Comic Sans MS',cursive;line-height:1.48}
+    .letter-flower-finale figcaption{font-style:normal}
+    @media(min-width:901px) and (max-height:900px){
+      .app{height:100svh;min-height:0;display:flex;flex-direction:column}
+      .site-header{height:58px;flex:none;padding-top:8px;padding-bottom:8px}
+      .site-footer{min-height:40px;flex:none;padding-top:6px;padding-bottom:8px}
+      .frame{min-height:0;height:auto;flex:1;align-items:center;padding:8px 0;width:min(1200px,100% - 50px)}
+      .scene{max-width:1140px}
+      .stage-top{margin-bottom:16px}
+      .stage-top h2{font-size:clamp(39px,4.4vw,57px);margin:9px 0 8px}
+      .stage-top .lead{font-size:15px;line-height:1.5}
+      .stage-actions{margin:14px 0}
+      #scene-gate h1{font-size:clamp(49px,5.6vw,73px);margin:15px 0}
+      #scene-gate .hero-art{width:min(36vw,390px)}
+      #scene-gate .name-card{margin-top:17px;padding:22px}
+      #scene-gate .lead{line-height:1.55}
+      .flower-wrap .stage-top{margin-bottom:17px}
+      .flower-grid{gap:12px;margin-bottom:0}
+      .flower-card img{height:clamp(122px,18vh,160px)}
+      .flower-card{padding-bottom:9px}
+      .flower-card-name{padding-top:10px;font-size:23px}
+      .flower-card-color{padding-top:3px}
+      .flower-card::after{margin-top:8px}
+      #scene-gift .stage-top h2{font-size:clamp(42px,4.4vw,58px);margin:7px 0 9px}
+      #scene-gift .gift-illustration{height:260px;min-height:0;margin:12px auto 3px}
+      #scene-gift .gift-orbit{height:250px;width:250px;left:calc(50% - 125px);top:calc(50% - 125px)}
+      #scene-beat .heart-button{width:225px;margin:0 auto 8px}
+      #scene-beat .hint{margin-bottom:8px}
+      #scene-catch .game-field{min-height:clamp(250px,38vh,300px)}
+      #scene-wish .choice-grid{margin-top:22px}
+      #scene-wish .choice{min-height:190px;padding:17px}
+      #scene-wish .choice-icon{font-size:40px;margin-bottom:3px}
+      #scene-garden .garden-wrap{max-width:830px}
+      #scene-garden .garden{aspect-ratio:auto;height:clamp(230px,37vh,300px);min-height:0}
+      #scene-garden .garden-message.visible{margin-top:10px;padding:9px 18px;font-size:18px}
+      #scene-garden .garden-actions{margin:10px 0 0;min-height:45px}
+      #scene-garden .garden-actions button{min-height:43px;padding:10px 19px}
+      #scene-envelope h2{font-size:clamp(42px,4.8vw,62px);margin:12px 0}
+      #scene-envelope .envelope-art{margin-top:28px}
+      #scene-letter{max-width:1140px}
+      #scene-letter .letter{max-width:none;padding:18px 30px 17px;transform:none;display:grid;grid-template-columns:minmax(0,1.17fr) minmax(0,.83fr);gap:30px;align-items:start}
+      #scene-letter .letter-main{min-width:0}
+      #scene-letter .letter-side{min-width:0;display:flex;flex-direction:column}
+      #scene-letter .letter-date{font-size:10px}
+      #scene-letter .letter h2{font-size:clamp(31px,3.35vw,43px);margin:8px 0 11px}
+      #scene-letter .letter p{font-size:14px;line-height:1.48;margin-bottom:9px}
+      #scene-letter .letter .salutation{font-size:20px;line-height:1.35;margin-bottom:9px}
+      #scene-letter .letter-wishes{margin:0 0 7px;padding:0 0 6px;border-top:0}
+      #scene-letter .letter-wishes h3{font-size:21px;margin:0 0 6px}
+      #scene-letter .letter-wishes ol{margin:0;padding-left:20px}
+      #scene-letter .letter-wishes li{font-size:12.5px;line-height:1.36;margin:0 0 4px;padding-left:1px}
+      #scene-letter .letter .signature{text-align:left;font-size:15px;line-height:1.3;margin:3px 0 4px}
+      #scene-letter .secret-trigger{align-self:flex-start;margin:3px 0;padding:6px 12px;min-height:32px;font-size:11px}
+      #scene-letter .letter .secret{font-size:12px!important;line-height:1.3;margin:3px 0;padding-top:5px}
+      #scene-letter .letter-flower-finale{width:100%;margin:8px 0 0;padding:6px;border-radius:13px}
+      #scene-letter .letter-flower-finale img{width:100%;height:clamp(82px,15vh,122px);max-height:none;object-fit:cover;object-position:center 42%;border-radius:8px}
+      #scene-letter .letter-flower-finale figcaption{font-size:13px;line-height:1.2;padding:5px 0 0}
+      #scene-letter .letter-actions{margin:12px 0 4px;gap:8px}
+      #scene-letter .letter-actions button{min-height:36px;padding:7px 14px;font-size:11px}
+      #scene-letter .save-help{margin:3px auto 0;font-size:11px;line-height:1.2}
+    }
+    @media(min-width:901px) and (max-height:740px){
+      #scene-letter .letter{padding-top:14px;padding-bottom:12px}
+      #scene-letter .letter-flower-finale img{height:90px}
+    }
+    /* Keep the mini game responsive on high-resolution and slower displays. */
+    .site-header{background:#fff9fbf5;backdrop-filter:none}
+    .name-card{background:#fffafbf5;backdrop-filter:none}
+    .hero-earth{animation:none}
+    .game-field{contain:layout paint}
+    .floating-heart.collected{animation:none;visibility:hidden;opacity:0;pointer-events:none}
+    .app.dialog-open .floating-heart{animation-play-state:paused}
+    .wish-dialog::backdrop{background:#3728329c;backdrop-filter:none}
+    .wish-dialog[open]{animation:wishOpen .22s ease-out both}
+    .wish-dialog-star{animation:none}
+    .garden-cloudlet,.garden.phase-grow .garden-sprout{animation-iteration-count:2;animation-fill-mode:forwards}
+    .garden.phase-butterflies .photo-butterfly.butterfly-one,.garden.phase-butterflies .photo-butterfly.butterfly-two,.garden.phase-butterflies .photo-butterfly.butterfly-three{animation-iteration-count:1;animation-fill-mode:forwards}
+    .photo-wing-left,.photo-wing-right{animation-iteration-count:8;animation-fill-mode:forwards}
+    .sun-rays{animation-iteration-count:1}
+    @media(prefers-reduced-motion:reduce){.wish-dialog[open]{animation:none}}
+
+
+    /* Mobile performance + handwritten UI pass */
+    :root{--font:Mali,'Comic Sans MS',cursive}
+    body,button,input{font-family:Mali,'Comic Sans MS',cursive}
+    h1,h2,h3,.lead,.eyebrow,.primary,.secondary,.hint,.footnote,.flower-card-name,.flower-card-color,.choice strong,.choice small,.growth-counter,.garden-caption,.wish-dialog,.site-footer{font-family:Mali,'Comic Sans MS',cursive}
+    h1,h2{font-weight:600;letter-spacing:-.035em}.lead{font-weight:400}.primary,.secondary{font-weight:600}
+    .brand strong,.date-label{font-family:Mali,'Comic Sans MS',cursive;font-weight:600}
+    .scene:not(.active){content-visibility:hidden}
+    .scene.active{content-visibility:auto}
+
+    @media(max-width:760px){
+      html,body{overscroll-behavior-y:none}
+      .app{min-height:100dvh;overflow-x:hidden}
+      .site-header{position:sticky;top:0;height:58px;padding:8px 13px;z-index:20;background:#fff9fbf2}
+      .brand{gap:8px}.brand-logo{width:82px;height:31px}.brand-divider{height:17px}.brand strong{font-size:9px;letter-spacing:.02em}.sound-btn{width:36px;height:36px;min-width:36px}
+      .frame{width:100%;min-height:calc(100dvh - 101px);padding:15px 14px 22px;display:block}
+      .scene{max-width:560px;margin:0 auto}.scene.active{animation:mobileArrive .28s ease-out both}
+      .scene-grid{display:flex;flex-direction:column;gap:8px}.scene-grid .copy{order:1}.scene-grid .hero-art{order:2;width:min(50vw,190px);margin:2px auto 0}
+      .eyebrow{font-size:10px;letter-spacing:.08em;line-height:1.35}.eyebrow::before,.center .eyebrow::before{width:17px}
+      h1{font-size:clamp(38px,11vw,50px);line-height:1.06;margin:9px 0 10px}h2,.stage-top h2,#scene-gift .stage-top h2,#scene-garden .stage-top h2{font-size:clamp(31px,9vw,42px);line-height:1.08;margin:8px 0 9px}
+      .lead{font-size:14px;line-height:1.52;margin-bottom:10px}.stage-top{margin-bottom:13px!important}
+      .name-card{margin:11px auto 0;padding:16px;border-radius:18px;box-shadow:0 10px 25px #87466418}.name-card label{font-size:12px}.name-row{display:block}.name-row input{height:48px;font-size:15px}.name-row button{width:100%;margin-top:9px}
+      .primary,.secondary{min-height:47px;padding:11px 16px;font-size:13px;box-shadow:0 7px 17px #9f547320}.actions,.stage-actions,.garden-actions,.letter-actions{gap:8px}
+      .flower-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:12px auto 0}.flower-card{border-radius:16px;padding-bottom:10px;box-shadow:0 8px 20px #743b5714}.flower-card img{height:118px}.flower-card-name{font-size:20px;padding:10px 10px 0}.flower-card-color{font-size:9px;padding:4px 10px 0}.flower-card::after{margin:8px 10px 0}.flower-card:last-child{width:calc(50% - 5px)}
+      #scene-gift .gift-illustration{height:220px;margin:6px auto 0}.gift-orbit,#scene-gift .gift-orbit{width:205px;height:205px;left:calc(50% - 102.5px);top:calc(50% - 102.5px);animation:none}.gift-present,#scene-gift .gift-present{transform:translateY(16px) rotate(-3deg);animation:none}.gift-twinkle{animation:none}
+      #scene-beat .heart-button{width:190px;margin:0 auto 8px;filter:none}.heart-button:hover{transform:none;filter:none}.heart-shape{box-shadow:inset 0 0 12px #aa577028,0 8px 18px #a24b6b18}
+      .game-field{min-height:285px;border-radius:22px;box-shadow:none}.floating-heart{width:54px;height:54px;font-size:26px;box-shadow:0 5px 12px #9f54731c;animation-duration:calc(var(--duration) * 1.35)}.game-count{top:10px;left:10px;font-size:11px;padding:6px 10px}
+      .wish-dialog{width:calc(100% - 22px);max-height:82dvh;border-radius:19px;box-shadow:0 15px 45px #17223844}.wish-dialog-card{padding:18px;border-radius:18px}.wish-dialog h3{font-size:22px}.wish-dialog-quote{font-size:17px;line-height:1.48}
+      .choice-grid{grid-template-columns:1fr;gap:9px;margin-top:12px}.choice{min-height:92px;grid-template-columns:48px 1fr 25px;column-gap:10px;padding:12px;border-radius:16px;box-shadow:0 7px 18px #9f547316}.choice-icon{width:46px;height:46px;font-size:25px}.choice strong{font-size:21px}.choice small{font-size:11px;line-height:1.35}
+      #scene-garden .garden{aspect-ratio:auto;height:min(54dvh,390px);min-height:300px;border-radius:23px;box-shadow:0 10px 26px #9d597421}.garden-cloudlet{animation:none}.sun-rays{animation:none}.garden.phase-grow .garden-sprout{animation:none}.photo-wing-left,.photo-wing-right{animation-duration:.7s}.garden.phase-butterflies .photo-butterfly.butterfly-three{display:none}.garden-message{font-size:17px}.garden-message.visible{padding:12px 14px}.garden-actions{margin-top:12px}.garden-actions button{width:100%}
+      #scene-envelope .envelope-art{width:190px;height:126px;margin:18px auto 14px;animation:none;filter:drop-shadow(0 10px 12px #a75d7428)}
+      #scene-letter .letter{display:block;padding:20px 17px;border-radius:18px;box-shadow:0 12px 30px #9f547323}.letter h2,#scene-letter .letter h2{font-size:31px}.letter p,#scene-letter .letter p{font-size:14px;line-height:1.55}.letter-wishes{margin:22px 0 12px;padding:17px 0 3px}.letter-wishes h3{font-size:23px}.letter-wishes li{font-size:13px;line-height:1.48}.letter-flower-finale{margin-top:22px}.letter-flower-finale img{max-height:230px}.letter-actions{display:grid;grid-template-columns:1fr 1fr;margin:15px 0 7px}.letter-actions .primary{grid-column:1/-1}.letter-actions button{width:100%;min-width:0}.save-help{font-size:10px;padding:0 6px}
+      .site-footer{min-height:43px;padding:8px 14px 10px;font-size:9px}.site-footer>span{display:none}.progress{margin:auto}
+      .earth-glow{filter:blur(18px);opacity:.45}.hero-earth{filter:grayscale(.15) sepia(.65) saturate(1.25) hue-rotate(298deg) drop-shadow(0 10px 15px #8f43662b)}
+      .confetti{animation-duration:.65s}
+    }
+    @media(max-width:390px){
+      .frame{padding-left:11px;padding-right:11px}.brand-logo{width:75px}.brand strong{font-size:8px}h1{font-size:37px}h2,.stage-top h2,#scene-gift .stage-top h2,#scene-garden .stage-top h2{font-size:30px}.flower-card img{height:105px}.game-field{min-height:270px}.floating-heart{width:50px;height:50px}.letter-actions{grid-template-columns:1fr}.letter-actions .primary{grid-column:auto}
+    }
+    @media(max-width:760px) and (prefers-reduced-motion:no-preference){
+      .floating-heart{will-change:transform}.scene.active{will-change:opacity,transform}
+    }
+    @media(max-width:760px) and (pointer:coarse){
+      .primary:hover,.secondary:hover,.flower-card:hover,.choice:hover,.heart-button:hover,.garden-seed-button:hover{transform:none}
+    }
+    @keyframes mobileArrive{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+    /* 20/10 V3: Vietnamese-safe handwriting and five color-only themes */
+    :root{--font:'Mali','Segoe UI','Helvetica Neue',Arial,sans-serif;--system-ui:'Segoe UI','Helvetica Neue',Arial,sans-serif}
+    html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+    body,button,input,textarea,select,h1,h2,h3,.lead,.eyebrow,.primary,.secondary,.hint,.footnote,.flower-card-name,.flower-card-color,.choice strong,.choice small,.growth-counter,.garden-caption,.wish-dialog,.site-footer{font-family:var(--font)!important;font-synthesis:none}
+    h1,h2,h3,.letter h2,.choice strong{font-weight:600!important;line-height:1.2;letter-spacing:-.015em;overflow-wrap:break-word}
+    .accent{font-style:normal}
+    .lead,.letter p,.wish-dialog-quote,.letter-wishes li{line-height:1.68;letter-spacing:0}
+    .eyebrow,.brand strong,.date-label,.flower-card-color{letter-spacing:.025em}
+    .letter,.letter h2,.letter .salutation,.letter .signature,.letter-wishes h3,.letter .secret,.letter-flower-finale figcaption,.letter-wishes li{font-family:var(--font)!important}
+    .letter h2,.letter .salutation,.letter .signature,.letter-wishes h3,.letter .secret,.letter-flower-finale figcaption{font-style:normal}
+    .letter .salutation,.letter .signature,.letter-wishes h3,.letter-flower-finale figcaption{font-weight:600}
+    input{font-size:16px!important}
+    button{font-weight:600!important}
+    [hidden]{display:none!important}
+    .name-choices{display:grid;gap:8px;margin-top:12px}
+    .name-match-tip{font-size:13px;line-height:1.5;color:var(--muted);margin:0}
+    .recipient-option{display:block;width:100%;padding:11px 14px;text-align:left;background:#fff;color:var(--ink);border:1px solid #d9aebe;border-radius:12px;font-size:14px;min-height:44px;transition:background .2s}
+    .recipient-option:hover,.recipient-option:focus-visible{background:#f8e1eb}
+    .theme-grid{max-width:1020px;grid-template-columns:repeat(5,minmax(0,1fr));gap:13px}
+    .theme-card,.theme-card:last-child{width:100%;min-height:211px;padding:13px 13px 19px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border-radius:22px;background:linear-gradient(155deg,#fffdfd,var(--card-soft))!important;gap:7px}
+    .theme-card::before{content:none}.theme-card::after{width:34px;height:3px;margin:9px 0 0}
+    .theme-swatch{display:block;width:96px;height:96px;min-height:96px;border-radius:50%;background:radial-gradient(circle at 29% 27%,#ffffffb8 0,transparent 32%),linear-gradient(135deg,var(--card-soft),var(--card-color));border:5px solid #fff;box-shadow:0 0 0 1px #573f4e33,0 10px 20px #6140511c;transition:transform .2s}
+    .theme-card:hover .theme-swatch,.theme-card:focus-visible .theme-swatch{transform:scale(1.08)}
+    .theme-card .flower-card-name{font-size:23px;line-height:1.3;margin:4px 0 0;padding:0;font-weight:600}
+    .theme-card .flower-card-color{padding:0;font-size:11px;line-height:1.5;text-transform:none;letter-spacing:0;font-weight:400;color:#725d68}
+    .theme-card[data-flower="lily"]{--card-color:#bd658a;--card-soft:#f9e3ed}
+    .theme-card[data-flower="rose"]{--card-color:#ae4f6f;--card-soft:#f8dde6}
+    .theme-card[data-flower="tulip"]{--card-color:#d97f64;--card-soft:#feeee5}
+    .theme-card[data-flower="baby"]{--card-color:#ac8674;--card-soft:#fbf1e5}
+    .theme-card[data-flower="hydrangea"]{--card-color:#638dc2;--card-soft:#e8f1fe}
+    .theme-afterword{font-size:15px;line-height:1.5;text-align:center;color:var(--muted);margin:16px auto 4px}
+    .letter-flower-finale img{object-fit:cover;object-position:center}
+    .site-header,.name-card{backdrop-filter:none}
+    .scene:not(.active){content-visibility:hidden}
+    @media(min-width:761px) and (max-width:1050px){.theme-grid{grid-template-columns:repeat(3,minmax(0,1fr));max-width:800px}.theme-card{min-height:175px}.theme-card:last-child{grid-column:auto}}
+    @media(max-width:760px){
+      .frame{width:100%;padding:18px max(14px,env(safe-area-inset-left)) 24px max(14px,env(safe-area-inset-right))}
+      h1{font-size:clamp(35px,9.4vw,48px);line-height:1.23}
+      h2,.stage-top h2,#scene-gift .stage-top h2,#scene-garden .stage-top h2{font-size:clamp(29px,7.8vw,40px);line-height:1.24}
+      .lead{font-size:15px;line-height:1.62}
+      .name-card{padding:18px 16px}.footnote{font-size:12px}.error{line-height:1.4}
+      .theme-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:18px auto 10px}
+      .theme-card,.theme-card:last-child{grid-column:auto;justify-self:stretch;width:100%;min-height:160px;padding:11px 7px;gap:4px}
+      .theme-swatch{width:66px;height:66px;min-height:66px;border-width:4px}
+      .theme-card .flower-card-name{font-size:18px;line-height:1.25;padding:0}
+      .theme-card .flower-card-color{font-size:11px}
+      .theme-card:last-child{grid-column:1/-1;justify-self:center;width:min(50%,190px)}
+      .theme-afterword{font-size:12px;margin:8px auto}
+      .letter h2,#scene-letter .letter h2{font-size:clamp(27px,7.4vw,34px);line-height:1.27}
+      .letter p,#scene-letter .letter p{font-size:14px;line-height:1.72}
+      .letter-wishes li{font-size:13px;line-height:1.6}
+      .letter-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+      .letter-actions .primary{grid-column:auto}
+      .letter-actions button{min-width:0;white-space:normal;line-height:1.35;padding:11px 8px}
+      .wish-dialog h3{line-height:1.3}
+      .wish-dialog-quote{line-height:1.6}
+      .floating-heart{will-change:auto}
+    }
+    @media(max-width:400px){
+      .theme-grid{gap:8px}.theme-card,.theme-card:last-child{min-height:149px}
+      .theme-swatch{width:60px;height:60px;min-height:60px}
+      .letter-actions{grid-template-columns:1fr}
+      .letter-actions .primary{grid-column:auto}
+    }
+    @media(prefers-reduced-motion:reduce){.theme-swatch{transition:none}}
+
+    /* V4 - Natural Earth and a light pink moon on an orbital path. */
+    #scene-gate .hero-art{isolation:isolate;overflow:visible}
+    #scene-gate .hero-earth{
+      position:relative;z-index:2;
+      filter:none; /* keep the original NASA image colors */
+      animation:none;
+    }
+    #scene-gate .earth-glow{z-index:0;opacity:.32;background:#a6c6e5;filter:blur(22px)}
+    #scene-gate .earth-orbit{z-index:0}
+    #scene-gate .earth-caption{z-index:5}
+    #scene-gate .moon-path{
+      position:absolute;z-index:0;inset:6%;border-radius:50%;
+      border:1px dashed rgba(175,92,132,.3);pointer-events:none;
+      transform:rotate(-22deg) scaleY(.87);
+    }
+    #scene-gate .moon-orbit{
+      position:absolute;inset:3%;z-index:1;
+      border-radius:50%;pointer-events:none;
+      animation:moonCircuit 14s linear infinite;
+    }
+    #scene-gate .pink-moon{
+      position:absolute;top:-2%;left:50%;
+      width:clamp(26px,14%,61px);aspect-ratio:1;border-radius:50%;
+      transform:translate(-50%,-15%);
+      background:radial-gradient(circle at 33% 26%,#fff7fc 0%,#ffd8e9 25%,#f2a8cb 59%,#c66b9c 89%,#a44d82 100%);
+      border:1px solid #f7bad7;
+      box-shadow:inset -5px -7px 9px #8c3d782a,0 3px 12px #ba5b8f40;
+    }
+    #scene-gate .pink-moon::before{
+      content:"";position:absolute;inset:0;border-radius:50%;opacity:.7;
+      background:radial-gradient(circle at 34% 62%,#d57da9 0 7%,#f8b8d5 8% 11%,transparent 12%),
+                 radial-gradient(circle at 72% 39%,#d982ac 0 10%,#f8c7df 11% 14%,transparent 15%),
+                 radial-gradient(circle at 57% 81%,#de8eb7 0 6%,transparent 8%);
+    }
+    /* Switch layer halfway through the journey so the moon goes behind Earth. */
+    @keyframes moonCircuit{
+      0%{transform:rotate(-110deg);z-index:1}
+      48.9%{z-index:1}
+      49%{z-index:3}
+      98.9%{z-index:3}
+      99%{z-index:1}
+      100%{transform:rotate(250deg);z-index:1}
+    }
+    @media(max-width:760px){
+      #scene-gate .earth-glow{filter:none;opacity:.18}
+      #scene-gate .moon-orbit{animation-duration:16s}
+      #scene-gate .pink-moon{width:clamp(25px,15%,37px);box-shadow:inset -3px -4px 6px #8c3d7828,0 2px 7px #ba5b8f33}
+    }
+    @media(prefers-reduced-motion:reduce){
+      #scene-gate .moon-orbit{animation:none;transform:rotate(45deg);z-index:3}
+    }
+
+    /* V5 botanical garden: layered vector petals and a calm illustrated landscape. */
+    #scene-garden .garden{
+      position:relative;isolation:isolate;overflow:hidden;
+      background:#f8e9ef;
+      border:1px solid color-mix(in srgb,var(--flower-accent) 33%,#e3d3db);
+      border-radius:32px;
+      box-shadow:0 16px 38px #724c6327;
+    }
+    #scene-garden .garden::before,#scene-garden .garden::after{content:none!important;display:none!important}
+    #scene-garden .garden-painting{display:block;position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none}
+    #scene-garden .painted-flower{opacity:0;transform-box:fill-box;transform-origin:50% 100%;transform:translateY(34px) scale(.73);transition:opacity .7s ease var(--bloom-delay),transform 1.3s cubic-bezier(.19,1.13,.34,1) var(--bloom-delay)}
+    #scene-garden .garden.phase-grow .painted-flower,#scene-garden .garden.is-finished .painted-flower{opacity:1;transform:translateY(0) scale(1)}
+    #scene-garden .painted-sun-rays{transform-origin:675px 128px;opacity:.12;transition:opacity 1s ease}
+    #scene-garden .garden.phase-sunshine .painted-sun-rays{opacity:.8}
+    #scene-garden .garden .growth-counter{z-index:11;top:20px;left:20px;background:#fffaf9ea;color:#70425a;font-size:clamp(11px,1.6vw,14px);line-height:1.5;border:1px solid #ecd7dd;box-shadow:0 5px 17px #7853691b}
+    #scene-garden .garden-seed-button{z-index:12;bottom:12%;filter:none}
+    #scene-garden .seed-icon{background:linear-gradient(135deg,#f6cad8,var(--flower-accent));box-shadow:0 5px 15px #8e486c3d}
+    #scene-garden .seed-hint{background:#fffafaec;border:1px solid #efd9e3;color:#753b58;padding:6px 12px}
+    #scene-garden .garden-butterflies{z-index:8}
+    #scene-garden .photo-wing{filter:none}
+    #scene-garden .garden-message{color:#735361;border-color:#eac9d7;border-radius:19px;background:#fffafcee;line-height:1.55}
+    #scene-garden .garden-message strong{font-weight:600;color:var(--flower-dark)}
+    #scene-garden .garden-message.visible{box-shadow:0 10px 25px #8f63751c}
+
+    /* The envelope itself is the button, with a real-sized keyboard/touch target. */
+    #scene-envelope .envelope-cta{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:15px;width:min(100%,370px);min-height:255px;margin:18px auto 7px;padding:20px 16px;border:1px solid #efd0db;border-radius:28px;background:radial-gradient(circle at 50% 40%,#ffffff 0%,#fff8fc 66%,#f5e2eb 100%);box-shadow:0 14px 34px #8d4e6e21;color:var(--flower-dark);transition:transform .24s ease,box-shadow .24s ease,border-color .24s ease;touch-action:manipulation}
+    #scene-envelope .envelope-cta:hover{transform:translateY(-4px);box-shadow:0 22px 40px #8d4e6e30;border-color:var(--flower-accent)}
+    #scene-envelope .envelope-cta:active{transform:scale(.985)}
+    #scene-envelope .envelope-cta:focus-visible{outline:3px solid var(--flower-accent);outline-offset:4px}
+    #scene-envelope .envelope-cta .envelope-art{position:relative;display:block;width:235px;height:148px;margin:7px auto 0;animation:none;filter:drop-shadow(0 12px 9px #87405b2b);transition:transform .25s ease}
+    #scene-envelope .envelope-cta:hover .envelope-art{transform:rotate(-4deg) translateY(-5px)}
+    #scene-envelope .envelope-paper{position:absolute;left:12%;right:12%;bottom:20%;height:92%;background:#fffdf7;border:1px solid #ebd7d9;border-radius:8px;transform:translateY(-13px) rotate(-2deg);box-shadow:0 -7px 12px #8d4e6e12}
+    #scene-envelope .envelope-paper{display:flex;flex-direction:column;justify-content:flex-start;align-items:center;padding:13px 9px 0;gap:4px;overflow:hidden}
+    #scene-envelope .envelope-recipient-label{font-size:10px;letter-spacing:.11em;font-weight:600;color:#a67787}
+    #scene-envelope .envelope-recipient-name{display:block;width:100%;font-size:clamp(13px,1.5vw,17px);line-height:1.25;font-weight:600;color:var(--flower-dark);white-space:normal;overflow-wrap:anywhere;text-align:center}
+    #scene-envelope .envelope-art::before,#scene-envelope .envelope-art::after{z-index:1}
+    #scene-envelope .envelope-cta .envelope-seal{z-index:3;top:64%;font-size:29px}
+    #scene-envelope .envelope-tap-hint{font-size:clamp(15px,1.75vw,18px);font-weight:600;line-height:1.45;color:var(--flower-dark)}
+    #scene-envelope .envelope-tap-hint span{padding-left:6px}
+    #scene-gate .hero-earth{filter:contrast(1.16) saturate(1.27) brightness(.96) drop-shadow(0 12px 18px #2e597443);animation:none}
+    @media(max-width:760px){
+      #scene-garden .garden{height:min(52dvh,405px);min-height:315px;border-radius:24px;box-shadow:0 9px 21px #724c631d}
+      #scene-garden .garden .growth-counter{top:12px;left:12px;max-width:calc(100% - 24px);font-size:11px;padding:7px 11px}
+      #scene-garden .garden-message.visible{padding:14px 16px;margin-top:14px;font-size:17px}
+      #scene-envelope .envelope-cta{width:min(100%,340px);min-height:245px;padding:17px 12px;margin-top:14px}
+      #scene-envelope .envelope-cta .envelope-art{width:200px;height:135px;margin:0}
+      #scene-envelope .envelope-tap-hint{font-size:15px}
+      #scene-envelope .envelope-cta:hover{transform:none}
+      #scene-gate .hero-earth{filter:contrast(1.15) saturate(1.22) brightness(.96) drop-shadow(0 5px 8px #2e597432)}
+    }
+    @media(prefers-reduced-motion:reduce){
+      #scene-garden .painted-flower,#scene-garden .painted-sun-rays,#scene-envelope .envelope-cta,#scene-envelope .envelope-art{transition:none!important}
+    }

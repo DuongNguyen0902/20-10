@@ -1,0 +1,288 @@
+<section class="scene center" id="scene-garden" aria-labelledby="garden-title">
+      <div class="stage-wrap garden-wrap">
+        <div class="stage-top">
+          <div class="eyebrow">05 · Khu vườn nhỏ của bạn</div>
+          <h2 id="garden-title">Chạm nhẹ, <span class="accent" id="gardenFlowerName">vườn thức dậy!</span></h2>
+          <p class="lead" id="gardenLead">Chạm nhẹ một lần, để những mầm xanh và đóa hoa thức dậy nhé.</p>
+        </div>
+        <div class="garden" id="garden" data-growth="0" role="button" tabindex="0" aria-label="Chạm vào khu vườn để cây mọc, bướm bay và nắng tỏa" aria-describedby="growthCounter">
+          <svg class="garden-painting" viewBox="0 0 1000 510" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+<defs>
+ <linearGradient id="meadowSky" x1="0" y1="0" x2=".5" y2="1"><stop offset="0" stop-color="#f9e7ee"/><stop offset=".54" stop-color="#fff6ee"/><stop offset="1" stop-color="#dfe8dc"/></linearGradient>
+ <radialGradient id="meadowGlow"><stop offset="0" stop-color="#fff7db" stop-opacity=".95"/><stop offset=".68" stop-color="#fff5de" stop-opacity=".32"/><stop offset="1" stop-color="#fff8e1" stop-opacity="0"/></radialGradient>
+ <linearGradient id="meadowHill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b9d7bc"/><stop offset="1" stop-color="#8cb99e"/></linearGradient>
+ <linearGradient id="meadowForeground" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9fc39f"/><stop offset="1" stop-color="#6e9d88"/></linearGradient>
+ <linearGradient id="meadowStem" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5f956e"/><stop offset=".55" stop-color="#75af81"/><stop offset="1" stop-color="#487e64"/></linearGradient>
+ <radialGradient id="petalBlush" cx=".3" cy=".2" r=".9"><stop offset="0" stop-color="#fff2f5"/><stop offset=".47" stop-color="#f5bad1"/><stop offset="1" stop-color="#dd86aa"/></radialGradient>
+ <radialGradient id="petalPeach" cx=".3" cy=".19" r=".88"><stop offset="0" stop-color="#fff8ed"/><stop offset=".52" stop-color="#f7dbc3"/><stop offset="1" stop-color="#ecad91"/></radialGradient>
+ <radialGradient id="petalLilac" cx=".3" cy=".17" r=".88"><stop offset="0" stop-color="#f9f6ff"/><stop offset=".51" stop-color="#dfcbe9"/><stop offset="1" stop-color="#bda6d6"/></radialGradient>
+ <radialGradient id="petalIvory" cx=".3" cy=".18" r=".9"><stop offset="0" stop-color="#fffefa"/><stop offset=".52" stop-color="#fef3df"/><stop offset="1" stop-color="#f6d6bf"/></radialGradient>
+ <radialGradient id="flowerHeart"><stop offset="0" stop-color="#fff4ba"/><stop offset=".55" stop-color="#f3bd73"/><stop offset="1" stop-color="#d59158"/></radialGradient>
+ <filter id="meadowSoftShadow" x="-50%" y="-50%" width="200%" height="200%"><feDropShadow dx="0" dy="4" stdDeviation="3" flood-color="#617c60" flood-opacity=".18"/></filter>
+</defs>
+<rect width="1000" height="510" fill="url(#meadowSky)"/>
+<circle cx="672" cy="127" r="190" fill="url(#meadowGlow)"/>
+<path d="M0 365 Q 170 320 315 340 T 635 330 T 1000 350 V510 H0Z" fill="#dce8d7" opacity=".8"/>
+<path d="M0 407 Q220 305 468 380 T1000 367 V510 H0Z" fill="url(#meadowHill)"/>
+<path d="M0 474 Q215 412 450 470 T1000 450 V510 H0Z" fill="url(#meadowForeground)"/>
+<g class="painted-cloud" fill="#fffefd" opacity=".7"><path d="M86 166q-25-1-25-19 0-17 20-19 4-28 33-28 23 0 34 22 19-8 34 7 12 14 2 27-6 10-25 10Z"/><path d="M493 118q-21 0-21-16 0-16 17-18 5-20 24-20 18 0 25 16 20-4 27 11 6 18-13 27Z" opacity=".66"/></g>
+<g class="painted-sun" transform="translate(675 128)"><circle r="90" fill="url(#meadowGlow)"/><circle r="53" fill="#fae5af" opacity=".52"/><circle r="43" fill="#ffdfa0"/><circle r="38" fill="#fff0c8" opacity=".5"/><path d="M-9 7Q0 15 10 5" fill="none" stroke="#b9856e" stroke-width="2.5" stroke-linecap="round"/><circle cx="-13" cy="-6" r="2.5" fill="#ae8772"/><circle cx="14" cy="-6" r="2.5" fill="#ae8772"/><circle cx="-20" cy="6" r="7" fill="#efb5ab" opacity=".3"/><circle cx="20" cy="6" r="7" fill="#efb5ab" opacity=".3"/></g>
+<g class="painted-sun-rays" transform="translate(675 128)" stroke="#efbd76" stroke-linecap="round" stroke-width="3" opacity=".63">
+<path d="M61.0 0.0L72.0 0.0"/>
+<path d="M52.8 30.5L62.4 36.0"/>
+<path d="M30.5 52.8L36.0 62.4"/>
+<path d="M0.0 61.0L0.0 72.0"/>
+<path d="M-30.5 52.8L-36.0 62.4"/>
+<path d="M-52.8 30.5L-62.4 36.0"/>
+<path d="M-61.0 0.0L-72.0 0.0"/>
+<path d="M-52.8 -30.5L-62.4 -36.0"/>
+<path d="M-30.5 -52.8L-36.0 -62.4"/>
+<path d="M-0.0 -61.0L-0.0 -72.0"/>
+<path d="M30.5 -52.8L36.0 -62.4"/>
+<path d="M52.8 -30.5L62.4 -36.0"/>
+</g>
+<g opacity=".38" fill="none" stroke="#6c9d77" stroke-width="3" stroke-linecap="round">
+<path d="M22 510q14 -36 3 -72"/>
+<path d="M82 510q14 -54 1 -107"/>
+<path d="M148 510q14 -30 8 -59"/>
+<path d="M217 510q-11 -23 -13 -45"/>
+<path d="M289 510q-11 -41 18 -82"/>
+<path d="M359 510q-11 -56 -6 -111"/>
+<path d="M438 510q14 -58 23 -115"/>
+<path d="M515 510q-11 -57 -3 -113"/>
+<path d="M585 510q-11 -25 -15 -50"/>
+<path d="M662 510q14 -23 -4 -45"/>
+<path d="M737 510q-11 -45 -15 -89"/>
+<path d="M822 510q14 -49 -12 -98"/>
+<path d="M888 510q14 -47 11 -93"/>
+<path d="M963 510q-11 -44 8 -87"/>
+</g>
+<g fill="#ffffff" opacity=".87">
+<circle cx="264" cy="106" r="2.3"/>
+<circle cx="332" cy="154" r="3.0"/>
+<circle cx="627" cy="116" r="2"/>
+<circle cx="677" cy="80" r="1.8"/>
+<circle cx="917" cy="220" r="2.3"/>
+<circle cx="280" cy="265" r="2.5"/>
+<circle cx="582" cy="235" r="2"/>
+<circle cx="932" cy="315" r="1.8"/>
+<circle cx="70" cy="278" r="1.6"/>
+<circle cx="423" cy="222" r="2.1"/>
+</g>
+<g transform="translate(60 465)"><g class="painted-flower" style="--bloom-delay:0.00s">
+<path d="M0 22 Q-26.0 -69.0 -9.1 -131.0" fill="none" stroke="url(#meadowStem)" stroke-width="5" stroke-linecap="round"/>
+<path d="M-4.5 -59.3 Q4.5 -99.3 28.3 -79.3Q15.5 -53.3 -4.5 -59.3Z" fill="#81ae85" opacity=".95"/>
+<path d="M-4.5 -59.3Q11.5 -68.3 28.3 -79.3" stroke="#d2e7ca" stroke-width="1.3" fill="none" opacity=".65"/>
+<path d="M-7.1 -93.8 Q-16.1 -133.8 -39.9 -113.8Q-27.1 -87.8 -7.1 -93.8Z" fill="#649a7d" opacity=".95"/>
+<path d="M-7.1 -93.8Q-23.1 -102.8 -39.9 -113.8" stroke="#d2e7ca" stroke-width="1.3" fill="none" opacity=".65"/>
+<g transform="translate(-9.1 -138.0)" filter="url(#meadowSoftShadow)">
+<ellipse cx="0" cy="-15.4" rx="11.9" ry="18.3" transform="rotate(10)" fill="url(#petalBlush)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-15.4" rx="11.9" ry="18.3" transform="rotate(70)" fill="url(#petalBlush)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-15.4" rx="11.9" ry="18.3" transform="rotate(130)" fill="url(#petalBlush)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-15.4" rx="11.9" ry="18.3" transform="rotate(190)" fill="url(#petalBlush)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-15.4" rx="11.9" ry="18.3" transform="rotate(250)" fill="url(#petalBlush)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-15.4" rx="11.9" ry="18.3" transform="rotate(310)" fill="url(#petalBlush)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<circle r="7.0" fill="url(#flowerHeart)" stroke="#fff4d4" stroke-width="2"/>
+<circle cx="4.6" cy="0.0" r="1.6" fill="#c98264" opacity=".8"/>
+<circle cx="0.0" cy="4.6" r="1.6" fill="#c98264" opacity=".8"/>
+<circle cx="-4.6" cy="0.0" r="1.6" fill="#c98264" opacity=".8"/>
+<circle cx="-0.0" cy="-4.6" r="1.6" fill="#c98264" opacity=".8"/>
+</g></g></g>
+<g transform="translate(145 494)"><g class="painted-flower" style="--bloom-delay:0.17s">
+<path d="M0 22 Q30.0 -113.0 10.5 -219.0" fill="none" stroke="url(#meadowStem)" stroke-width="6" stroke-linecap="round"/>
+<path d="M5.2 -97.2 Q14.2 -137.2 40.4 -117.2Q25.2 -91.2 5.2 -97.2Z" fill="#81ae85" opacity=".95"/>
+<path d="M5.2 -97.2Q21.2 -106.2 40.4 -117.2" stroke="#d2e7ca" stroke-width="1.3" fill="none" opacity=".65"/>
+<path d="M8.2 -153.7 Q-0.8 -193.7 -27.0 -173.7Q-11.8 -147.7 8.2 -153.7Z" fill="#649a7d" opacity=".95"/>
+<path d="M8.2 -153.7Q-7.8 -162.7 -27.0 -173.7" stroke="#d2e7ca" stroke-width="1.3" fill="none" opacity=".65"/>
+<g transform="translate(10.5 -226.0)" filter="url(#meadowSoftShadow)">
+<ellipse cx="0" cy="-21.7" rx="16.8" ry="25.8" transform="rotate(10)" fill="url(#petalIvory)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-21.7" rx="16.8" ry="25.8" transform="rotate(70)" fill="url(#petalIvory)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-21.7" rx="16.8" ry="25.8" transform="rotate(130)" fill="url(#petalIvory)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-21.7" rx="16.8" ry="25.8" transform="rotate(190)" fill="url(#petalIvory)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-21.7" rx="16.8" ry="25.8" transform="rotate(250)" fill="url(#petalIvory)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-21.7" rx="16.8" ry="25.8" transform="rotate(310)" fill="url(#petalIvory)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<circle r="9.8" fill="url(#flowerHeart)" stroke="#fff4d4" stroke-width="2"/>
+<circle cx="6.6" cy="0.0" r="1.6" fill="#c98264" opacity=".8"/>
+<circle cx="0.0" cy="6.6" r="1.6" fill="#c98264" opacity=".8"/>
+<circle cx="-6.6" cy="0.0" r="1.6" fill="#c98264" opacity=".8"/>
+<circle cx="-0.0" cy="-6.6" r="1.6" fill="#c98264" opacity=".8"/>
+</g></g></g>
+<g transform="translate(245 482)"><g class="painted-flower" style="--bloom-delay:0.34s">
+<path d="M0 22 Q-22.0 -76.5 -7.7 -146.0" fill="none" stroke="url(#meadowStem)" stroke-width="5" stroke-linecap="round"/>
+<path d="M-3.8 -65.8 Q5.2 -105.8 30.2 -85.8Q16.2 -59.8 -3.8 -65.8Z" fill="#81ae85" opacity=".95"/>
+<path d="M-3.8 -65.8Q12.2 -74.8 30.2 -85.8" stroke="#d2e7ca" stroke-width="1.3" fill="none" opacity=".65"/>
+<path d="M-6.0 -104.0 Q-15.0 -144.0 -40.0 -124.0Q-26.0 -98.0 -6.0 -104.0Z" fill="#649a7d" opacity=".95"/>
+<path d="M-6.0 -104.0Q-22.0 -113.0 -40.0 -124.0" stroke="#d2e7ca" stroke-width="1.3" fill="none" opacity=".65"/>
+<g transform="translate(-7.7 -153.0)" filter="url(#meadowSoftShadow)">
+<ellipse cx="0" cy="-18.6" rx="14.3" ry="22.1" transform="rotate(10)" fill="url(#petalLilac)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-18.6" rx="14.3" ry="22.1" transform="rotate(70)" fill="url(#petalLilac)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-18.6" rx="14.3" ry="22.1" transform="rotate(130)" fill="url(#petalLilac)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-18.6" rx="14.3" ry="22.1" transform="rotate(190)" fill="url(#petalLilac)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-18.6" rx="14.3" ry="22.1" transform="rotate(250)" fill="url(#petalLilac)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-18.6" rx="14.3" ry="22.1" transform="rotate(310)" fill="url(#petalLilac)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<circle r="8.4" fill="url(#flowerHeart)" stroke="#fff4d4" stroke-width="2"/>
+<circle cx="5.6" cy="0.0" r="1.6" fill="#c98264" opacity=".8"/>
+<circle cx="0.0" cy="5.6" r="1.6" fill="#c98264" opacity=".8"/>
+<circle cx="-5.6" cy="0.0" r="1.6" fill="#c98264" opacity=".8"/>
+<circle cx="-0.0" cy="-5.6" r="1.6" fill="#c98264" opacity=".8"/>
+</g></g></g>
+<g transform="translate(330 495)"><g class="painted-flower" style="--bloom-delay:0.51s">
+<path d="M0 22 Q30.0 -123.0 10.5 -239.0" fill="none" stroke="url(#meadowStem)" stroke-width="6" stroke-linecap="round"/>
+<path d="M5.2 -105.8 Q14.2 -145.8 40.8 -125.8Q25.2 -99.8 5.2 -105.8Z" fill="#81ae85" opacity=".95"/>
+<path d="M5.2 -105.8Q21.2 -114.8 40.8 -125.8" stroke="#d2e7ca" stroke-width="1.3" fill="none" opacity=".65"/>
+<path d="M8.2 -167.3 Q-0.8 -207.3 -27.4 -187.3Q-11.8 -161.3 8.2 -167.3Z" fill="#649a7d" opacity=".95"/>
+<path d="M8.2 -167.3Q-7.8 -176.3 -27.4 -187.3" stroke="#d2e7ca" stroke-width="1.3" fill="none" opacity=".65"/>
+<g transform="translate(10.5 -246.0)" filter="url(#meadowSoftShadow)">
+<ellipse cx="0" cy="-22.8" rx="17.6" ry="27.1" transform="rotate(10)" fill="url(#petalBlush)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-22.8" rx="17.6" ry="27.1" transform="rotate(70)" fill="url(#petalBlush)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-22.8" rx="17.6" ry="27.1" transform="rotate(130)" fill="url(#petalBlush)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-22.8" rx="17.6" ry="27.1" transform="rotate(190)" fill="url(#petalBlush)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-22.8" rx="17.6" ry="27.1" transform="rotate(250)" fill="url(#petalBlush)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-22.8" rx="17.6" ry="27.1" transform="rotate(310)" fill="url(#petalBlush)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<circle r="10.3" fill="url(#flowerHeart)" stroke="#fff4d4" stroke-width="2"/>
+<circle cx="6.9" cy="0.0" r="1.6" fill="#c98264" opacity=".8"/>
+<circle cx="0.0" cy="6.9" r="1.6" fill="#c98264" opacity=".8"/>
+<circle cx="-6.9" cy="0.0" r="1.6" fill="#c98264" opacity=".8"/>
+<circle cx="-0.0" cy="-6.9" r="1.6" fill="#c98264" opacity=".8"/>
+</g></g></g>
+<g transform="translate(432 505)"><g class="painted-flower" style="--bloom-delay:0.68s">
+<path d="M0 22 Q-32.0 -92.0 -11.2 -177.0" fill="none" stroke="url(#meadowStem)" stroke-width="5" stroke-linecap="round"/>
+<path d="M-5.5 -79.1 Q3.5 -119.1 29.1 -99.1Q14.5 -73.1 -5.5 -79.1Z" fill="#81ae85" opacity=".95"/>
+<path d="M-5.5 -79.1Q10.5 -88.1 29.1 -99.1" stroke="#d2e7ca" stroke-width="1.3" fill="none" opacity=".65"/>
+<path d="M-8.7 -125.1 Q-17.7 -165.1 -43.3 -145.1Q-28.7 -119.1 -8.7 -125.1Z" fill="#649a7d" opacity=".95"/>
+<path d="M-8.7 -125.1Q-24.7 -134.1 -43.3 -145.1" stroke="#d2e7ca" stroke-width="1.3" fill="none" opacity=".65"/>
+<g transform="translate(-11.2 -184.0)" filter="url(#meadowSoftShadow)">
+<ellipse cx="0" cy="-20.1" rx="15.6" ry="23.9" transform="rotate(10)" fill="url(#petalPeach)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-20.1" rx="15.6" ry="23.9" transform="rotate(70)" fill="url(#petalPeach)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-20.1" rx="15.6" ry="23.9" transform="rotate(130)" fill="url(#petalPeach)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-20.1" rx="15.6" ry="23.9" transform="rotate(190)" fill="url(#petalPeach)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-20.1" rx="15.6" ry="23.9" transform="rotate(250)" fill="url(#petalPeach)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-20.1" rx="15.6" ry="23.9" transform="rotate(310)" fill="url(#petalPeach)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<circle r="9.1" fill="url(#flowerHeart)" stroke="#fff4d4" stroke-width="2"/>
+<circle cx="6.1" cy="0.0" r="1.6" fill="#c98264" opacity=".8"/>
+<circle cx="0.0" cy="6.1" r="1.6" fill="#c98264" opacity=".8"/>
+<circle cx="-6.1" cy="0.0" r="1.6" fill="#c98264" opacity=".8"/>
+<circle cx="-0.0" cy="-6.1" r="1.6" fill="#c98264" opacity=".8"/>
+</g></g></g>
+<g transform="translate(535 503)"><g class="painted-flower" style="--bloom-delay:0.00s">
+<path d="M0 22 Q14.0 -126.0 4.9 -245.0" fill="none" stroke="url(#meadowStem)" stroke-width="6" stroke-linecap="round"/>
+<path d="M2.4 -108.4 Q11.4 -148.4 38.8 -128.4Q22.4 -102.4 2.4 -108.4Z" fill="#81ae85" opacity=".95"/>
+<path d="M2.4 -108.4Q18.4 -117.4 38.8 -128.4" stroke="#d2e7ca" stroke-width="1.3" fill="none" opacity=".65"/>
+<path d="M3.8 -171.4 Q-5.2 -211.4 -32.6 -191.4Q-16.2 -165.4 3.8 -171.4Z" fill="#649a7d" opacity=".95"/>
+<path d="M3.8 -171.4Q-12.2 -180.4 -32.6 -191.4" stroke="#d2e7ca" stroke-width="1.3" fill="none" opacity=".65"/>
+<g transform="translate(4.9 -252.0)" filter="url(#meadowSoftShadow)">
+<ellipse cx="0" cy="-24.9" rx="19.3" ry="29.6" transform="rotate(10)" fill="url(#petalBlush)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-24.9" rx="19.3" ry="29.6" transform="rotate(70)" fill="url(#petalBlush)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-24.9" rx="19.3" ry="29.6" transform="rotate(130)" fill="url(#petalBlush)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-24.9" rx="19.3" ry="29.6" transform="rotate(190)" fill="url(#petalBlush)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-24.9" rx="19.3" ry="29.6" transform="rotate(250)" fill="url(#petalBlush)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-24.9" rx="19.3" ry="29.6" transform="rotate(310)" fill="url(#petalBlush)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<circle r="11.3" fill="url(#flowerHeart)" stroke="#fff4d4" stroke-width="2"/>
+<circle cx="7.5" cy="0.0" r="1.6" fill="#c98264" opacity=".8"/>
+<circle cx="0.0" cy="7.5" r="1.6" fill="#c98264" opacity=".8"/>
+<circle cx="-7.5" cy="0.0" r="1.6" fill="#c98264" opacity=".8"/>
+<circle cx="-0.0" cy="-7.5" r="1.6" fill="#c98264" opacity=".8"/>
+</g></g></g>
+<g transform="translate(636 495)"><g class="painted-flower" style="--bloom-delay:0.17s">
+<path d="M0 22 Q-22.0 -91.0 -7.7 -175.0" fill="none" stroke="url(#meadowStem)" stroke-width="5" stroke-linecap="round"/>
+<path d="M-3.8 -78.3 Q5.2 -118.3 30.4 -98.3Q16.2 -72.3 -3.8 -78.3Z" fill="#81ae85" opacity=".95"/>
+<path d="M-3.8 -78.3Q12.2 -87.3 30.4 -98.3" stroke="#d2e7ca" stroke-width="1.3" fill="none" opacity=".65"/>
+<path d="M-6.0 -123.8 Q-15.0 -163.8 -40.2 -143.8Q-26.0 -117.8 -6.0 -123.8Z" fill="#649a7d" opacity=".95"/>
+<path d="M-6.0 -123.8Q-22.0 -132.8 -40.2 -143.8" stroke="#d2e7ca" stroke-width="1.3" fill="none" opacity=".65"/>
+<g transform="translate(-7.7 -182.0)" filter="url(#meadowSoftShadow)">
+<ellipse cx="0" cy="-19.1" rx="14.8" ry="22.7" transform="rotate(10)" fill="url(#petalIvory)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-19.1" rx="14.8" ry="22.7" transform="rotate(70)" fill="url(#petalIvory)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-19.1" rx="14.8" ry="22.7" transform="rotate(130)" fill="url(#petalIvory)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-19.1" rx="14.8" ry="22.7" transform="rotate(190)" fill="url(#petalIvory)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-19.1" rx="14.8" ry="22.7" transform="rotate(250)" fill="url(#petalIvory)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-19.1" rx="14.8" ry="22.7" transform="rotate(310)" fill="url(#petalIvory)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<circle r="8.6" fill="url(#flowerHeart)" stroke="#fff4d4" stroke-width="2"/>
+<circle cx="5.8" cy="0.0" r="1.6" fill="#c98264" opacity=".8"/>
+<circle cx="0.0" cy="5.8" r="1.6" fill="#c98264" opacity=".8"/>
+<circle cx="-5.8" cy="0.0" r="1.6" fill="#c98264" opacity=".8"/>
+<circle cx="-0.0" cy="-5.8" r="1.6" fill="#c98264" opacity=".8"/>
+</g></g></g>
+<g transform="translate(723 499)"><g class="painted-flower" style="--bloom-delay:0.34s">
+<path d="M0 22 Q36.0 -119.5 12.6 -232.0" fill="none" stroke="url(#meadowStem)" stroke-width="6" stroke-linecap="round"/>
+<path d="M6.2 -102.8 Q15.2 -142.8 42.2 -122.8Q26.2 -96.8 6.2 -102.8Z" fill="#81ae85" opacity=".95"/>
+<path d="M6.2 -102.8Q22.2 -111.8 42.2 -122.8" stroke="#d2e7ca" stroke-width="1.3" fill="none" opacity=".65"/>
+<path d="M9.8 -162.5 Q0.8 -202.5 -26.2 -182.5Q-10.2 -156.5 9.8 -162.5Z" fill="#649a7d" opacity=".95"/>
+<path d="M9.8 -162.5Q-6.2 -171.5 -26.2 -182.5" stroke="#d2e7ca" stroke-width="1.3" fill="none" opacity=".65"/>
+<g transform="translate(12.6 -239.0)" filter="url(#meadowSoftShadow)">
+<ellipse cx="0" cy="-23.9" rx="18.4" ry="28.4" transform="rotate(10)" fill="url(#petalLilac)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-23.9" rx="18.4" ry="28.4" transform="rotate(70)" fill="url(#petalLilac)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-23.9" rx="18.4" ry="28.4" transform="rotate(130)" fill="url(#petalLilac)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-23.9" rx="18.4" ry="28.4" transform="rotate(190)" fill="url(#petalLilac)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-23.9" rx="18.4" ry="28.4" transform="rotate(250)" fill="url(#petalLilac)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-23.9" rx="18.4" ry="28.4" transform="rotate(310)" fill="url(#petalLilac)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<circle r="10.8" fill="url(#flowerHeart)" stroke="#fff4d4" stroke-width="2"/>
+<circle cx="7.2" cy="0.0" r="1.6" fill="#c98264" opacity=".8"/>
+<circle cx="0.0" cy="7.2" r="1.6" fill="#c98264" opacity=".8"/>
+<circle cx="-7.2" cy="0.0" r="1.6" fill="#c98264" opacity=".8"/>
+<circle cx="-0.0" cy="-7.2" r="1.6" fill="#c98264" opacity=".8"/>
+</g></g></g>
+<g transform="translate(822 493)"><g class="painted-flower" style="--bloom-delay:0.51s">
+<path d="M0 22 Q-16.0 -87.5 -5.6 -168.0" fill="none" stroke="url(#meadowStem)" stroke-width="5" stroke-linecap="round"/>
+<path d="M-2.8 -75.2 Q6.2 -115.2 31.0 -95.2Q17.2 -69.2 -2.8 -75.2Z" fill="#81ae85" opacity=".95"/>
+<path d="M-2.8 -75.2Q13.2 -84.2 31.0 -95.2" stroke="#d2e7ca" stroke-width="1.3" fill="none" opacity=".65"/>
+<path d="M-4.4 -119.0 Q-13.4 -159.0 -38.2 -139.0Q-24.4 -113.0 -4.4 -119.0Z" fill="#649a7d" opacity=".95"/>
+<path d="M-4.4 -119.0Q-20.4 -128.0 -38.2 -139.0" stroke="#d2e7ca" stroke-width="1.3" fill="none" opacity=".65"/>
+<g transform="translate(-5.6 -175.0)" filter="url(#meadowSoftShadow)">
+<ellipse cx="0" cy="-18.0" rx="13.9" ry="21.4" transform="rotate(10)" fill="url(#petalPeach)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-18.0" rx="13.9" ry="21.4" transform="rotate(70)" fill="url(#petalPeach)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-18.0" rx="13.9" ry="21.4" transform="rotate(130)" fill="url(#petalPeach)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-18.0" rx="13.9" ry="21.4" transform="rotate(190)" fill="url(#petalPeach)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-18.0" rx="13.9" ry="21.4" transform="rotate(250)" fill="url(#petalPeach)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-18.0" rx="13.9" ry="21.4" transform="rotate(310)" fill="url(#petalPeach)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<circle r="8.2" fill="url(#flowerHeart)" stroke="#fff4d4" stroke-width="2"/>
+<circle cx="5.4" cy="0.0" r="1.6" fill="#c98264" opacity=".8"/>
+<circle cx="0.0" cy="5.4" r="1.6" fill="#c98264" opacity=".8"/>
+<circle cx="-5.4" cy="0.0" r="1.6" fill="#c98264" opacity=".8"/>
+<circle cx="-0.0" cy="-5.4" r="1.6" fill="#c98264" opacity=".8"/>
+</g></g></g>
+<g transform="translate(920 488)"><g class="painted-flower" style="--bloom-delay:0.68s">
+<path d="M0 22 Q16.0 -109.0 5.6 -211.0" fill="none" stroke="url(#meadowStem)" stroke-width="6" stroke-linecap="round"/>
+<path d="M2.8 -93.7 Q11.8 -133.7 37.6 -113.7Q22.8 -87.7 2.8 -93.7Z" fill="#81ae85" opacity=".95"/>
+<path d="M2.8 -93.7Q18.8 -102.7 37.6 -113.7" stroke="#d2e7ca" stroke-width="1.3" fill="none" opacity=".65"/>
+<path d="M4.4 -148.2 Q-4.6 -188.2 -30.4 -168.2Q-15.6 -142.2 4.4 -148.2Z" fill="#649a7d" opacity=".95"/>
+<path d="M4.4 -148.2Q-11.6 -157.2 -30.4 -168.2" stroke="#d2e7ca" stroke-width="1.3" fill="none" opacity=".65"/>
+<g transform="translate(5.6 -218.0)" filter="url(#meadowSoftShadow)">
+<ellipse cx="0" cy="-20.7" rx="16.0" ry="24.6" transform="rotate(10)" fill="url(#petalBlush)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-20.7" rx="16.0" ry="24.6" transform="rotate(70)" fill="url(#petalBlush)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-20.7" rx="16.0" ry="24.6" transform="rotate(130)" fill="url(#petalBlush)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-20.7" rx="16.0" ry="24.6" transform="rotate(190)" fill="url(#petalBlush)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-20.7" rx="16.0" ry="24.6" transform="rotate(250)" fill="url(#petalBlush)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<ellipse cx="0" cy="-20.7" rx="16.0" ry="24.6" transform="rotate(310)" fill="url(#petalBlush)" stroke="#fffdf7" stroke-opacity=".48" stroke-width="1.4"/>
+<circle r="9.4" fill="url(#flowerHeart)" stroke="#fff4d4" stroke-width="2"/>
+<circle cx="6.2" cy="0.0" r="1.6" fill="#c98264" opacity=".8"/>
+<circle cx="0.0" cy="6.2" r="1.6" fill="#c98264" opacity=".8"/>
+<circle cx="-6.2" cy="0.0" r="1.6" fill="#c98264" opacity=".8"/>
+<circle cx="-0.0" cy="-6.2" r="1.6" fill="#c98264" opacity=".8"/>
+</g></g></g>
+<g class="painted-buds" fill="#fcf8e8" stroke="#f1dbc3" stroke-width="1.4">
+<circle cx="18" cy="469" r="5"/>
+<circle cx="108" cy="482" r="7"/>
+<circle cx="211" cy="469" r="5"/>
+<circle cx="297" cy="477" r="7"/>
+<circle cx="401" cy="478" r="5"/>
+<circle cx="483" cy="493" r="7"/>
+<circle cx="603" cy="467" r="5"/>
+<circle cx="689" cy="485" r="7"/>
+<circle cx="788" cy="475" r="5"/>
+<circle cx="857" cy="489" r="7"/>
+<circle cx="972" cy="464" r="5"/>
+</g>
+<path d="M0 506Q170 492 322 509 T645 503 T1000 504 V510 H0Z" fill="#61927e" opacity=".63"/>
+</svg>
+          <div class="garden-butterflies" aria-hidden="true">
+            <svg class="photo-butterfly butterfly-one" viewBox="0 0 64 58"><path class="photo-wing photo-wing-left" d="M31 28C24 9 13 3 6 9-2 16 6 28 29 29 12 27 7 36 14 46 21 54 29 40 32 31Z"/><path class="photo-wing photo-wing-right" d="M33 28C40 9 51 3 58 9c8 7 0 19-23 20 17-2 22 7 15 17-7 8-15-6-18-15Z"/><path class="photo-body" d="M32 22c3 0 4 4 4 10s-1 13-4 13-4-7-4-13 1-10 4-10Z"/><path class="photo-antenna" d="M31 24C26 16 25 12 22 11M33 24c5-8 6-12 9-13"/></svg>
+            <svg class="photo-butterfly butterfly-two" viewBox="0 0 64 58"><path class="photo-wing photo-wing-left" d="M31 28C24 9 13 3 6 9-2 16 6 28 29 29 12 27 7 36 14 46 21 54 29 40 32 31Z"/><path class="photo-wing photo-wing-right" d="M33 28C40 9 51 3 58 9c8 7 0 19-23 20 17-2 22 7 15 17-7 8-15-6-18-15Z"/><path class="photo-body" d="M32 22c3 0 4 4 4 10s-1 13-4 13-4-7-4-13 1-10 4-10Z"/><path class="photo-antenna" d="M31 24C26 16 25 12 22 11M33 24c5-8 6-12 9-13"/></svg>
+            <svg class="photo-butterfly butterfly-three" viewBox="0 0 64 58"><path class="photo-wing photo-wing-left" d="M31 28C24 9 13 3 6 9-2 16 6 28 29 29 12 27 7 36 14 46 21 54 29 40 32 31Z"/><path class="photo-wing photo-wing-right" d="M33 28C40 9 51 3 58 9c8 7 0 19-23 20 17-2 22 7 15 17-7 8-15-6-18-15Z"/><path class="photo-body" d="M32 22c3 0 4 4 4 10s-1 13-4 13-4-7-4-13 1-10 4-10Z"/><path class="photo-antenna" d="M31 24C26 16 25 12 22 11M33 24c5-8 6-12 9-13"/></svg>
+          </div>
+          <div class="growth-counter" id="growthCounter" role="status" aria-live="polite">Chạm để khu vườn thức dậy ✨</div>
+          <div class="garden-seed-button" aria-hidden="true"><span class="seed-aura"></span><span class="seed-icon">✦</span><span class="seed-hint">Chạm để gieo mầm</span></div>
+        </div>
+        <p class="garden-message" id="gardenMessage" aria-live="polite" aria-hidden="true">Mỗi người có một nhịp nở hoa riêng. <strong>Chúc bạn luôn thấy tự hào về nhịp điệu của mình.</strong> ♡</p>
+        <div class="garden-actions"><button class="secondary garden-replay" id="gardenReplay" type="button" hidden>Ngắm lại khu vườn ↺</button><button class="primary envelope-button" id="gardenNext" type="button">Có thư dành cho bạn! Mở xem →</button></div>
+      </div>
+    </section>
